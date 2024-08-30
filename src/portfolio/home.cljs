@@ -1,7 +1,7 @@
 (ns portfolio.home
   (:require [reagent.core :as r]
             [reagent.dom :as rdom]
-            [portfolio.texts :as txt]))
+            [portfolio.helpers.texts :as txt]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;                state                ;
@@ -9,6 +9,15 @@
 
 (def state (r/atom {:menu-open false
                     :display-content :landing}))
+
+(def pages [[:a {:href "#home"} "Home"]
+            [:a {:href "#bio"} "Bio"]])
+
+(defn page-list []
+  [:div.page-list
+   [:ol
+    (for [item pages]
+      [:li item])]])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;            buttons/misc             ;
@@ -19,7 +28,7 @@
    {:class (when (not (:menu-open @state)) "visible")
     :on-click #(swap! state update :menu-open not)
     :style {:margin "20px"}}
-   "Menu"])
+   ">>"])
 
 (defn back-button []
   [:div
@@ -29,7 +38,7 @@
 
 (defn menu []
   [:div
-   [:p "Here is the list"]])
+   [page-list]])
 
 (defn sidebar []
   [:div.sidebar
@@ -39,10 +48,7 @@
 
 (defn footer []
   [:div.footer
-   [:div "Lorelai Lyons 2024"]
-   [:div {:style {:display "flex" :gap "1vh"}}
-    [:a {:href "#home"} "Home"]
-    [:a {:href "#bio"} "Bio"]]])
+   [:div "Lorelai Lyons 2024"]])
 
 (defn heading []
   [:div.heading
@@ -55,13 +61,12 @@
 (defn landing []
   [:div.landing-content
    [:div.title
-    [:h1 {:style {:font-family "Fira Sans"}}
+    [:h1 {:style {:font-weight "bold"}}
      "Lorelai Lyons"]
-    [:h2
+    [:h4 {:style {:opacity "50%"}}
      "Programming"]]
    [:div.landing-container
-    [:h "Multi-disciplinary creator, innovator, and educator. "]
-    [:p txt/home-text]]])
+    [txt/home-text-carousel]]])
 
 (defn main-view-container []
    [:div.main-content
