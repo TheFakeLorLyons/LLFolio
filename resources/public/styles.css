@@ -16,9 +16,6 @@
 
 /*containers*/
 body {
-  display: flex;
-  align-items: center;
-  height: 100vh;
   margin: 0;
   background: linear-gradient(205deg, rgba(187, 189, 174, 0.156),rgb(1, 0, 1) 60%);
   background-color: #150628;
@@ -26,45 +23,80 @@ body {
   font-size: var(--font-size-base);
   color: #e8efffea;
 }
-.title {
-  position: absolute;
-  align-self: center;
-  margin-left: 2vw;
 
+.heading {
+
+}
+
+.title {
+  
 }
 .landing-container {
   position: fixed;
-  align-self: center;
-  align-items: center;
-  height: fit-content;
-  margin-left: 2vw;
+
 }
 
 .landing-content {
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  position: relative ;
-  justify-content: center;
-  margin-bottom: 40vh; 
-  width: 50%;
-  position: relative;
+
 }
 
 .interactivity {
-  display: flex;
   flex: 1;
-  position: relative;
-  justify-content: center;
+ 
 }
 
+.main-content {
+
+}
 .layout {
-  display: flex;
-  flex-direction: column;
+
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
   position: relative;
+  transition: background 0.5s ease, background-color 0.5s ease;
 }
+.micont {
+
+}
+
+#homeCarousel {
+
+}
+.carousel-inner {
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.carousel-item {
+  align-items: center;
+  margin-top: 15vh;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  position: fixed;
+  top: 43.5%;
+  width: 45%; /* Adjust width */
+  height: 40px; /* Adjust height */
+  border-radius: 50%; /* Circular buttons */
+  color: white; /* Icon color */
+  border: none; /* Remove border */
+  z-index: 10; /* Ensure it is on top of other elements */
+  cursor: pointer; /* Indicate clickable */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(200%);
+}
+
+
+.hometext, .mission {
+
+}
+
+
 
 .sidebar {
   width: 15vw; 
@@ -83,14 +115,8 @@ body {
   left: 0; /* Move into view when visible */
 }
 
-.main-content {
-  display: flex; 
-  padding: 20px;
-  overflow-y: auto;
-  justify-content: center;
-  width: 97.5vw;
-  align-items: center;
-}
+
+
 .footer {
   background-color: black;
   color: white;
@@ -98,11 +124,15 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   position: fixed;
   bottom: 0;
   width: 100%;
   text-align: center;
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -110,47 +140,22 @@ body {
   align-self: center;
   text-align: center;
 }
-.heading {
 
+.page-list {
+  margin-top: 5vh;
 }
 
-.micont {
+
+
+
+.bio-content {
   text-align: center;
 }
 
 
 
 
-#homeCarousel {
-  margin-top: 35vh;
-}
 
-.carousel-item {
-  margin-top: 10vh;
-}
-
-.carousel-control-prev, .carousel-control-next {
-  position: fixed;
-  top: 50%;
-  height: fit-content;
-}
-.carousel-control-prev {
-  margin-left: 10vw;
-}
-
-.carousel-control-next {
-  margin-right: 10vw;
-}
-
-.hometext, .mission {
-  padding-left: 15%;
-  padding-right: 15%;
-}
-
-
-.page-list {
-  margin-top: 5vh;
-}
 
 
 
@@ -295,7 +300,10 @@ button:hover {
   color: transparent;
   gap: .2vw;
 }
-
+.btn-primary:hover {
+  transform: scale(125%);
+  filter:brightness(2);
+}
 
 
 /*Not implemented*/
@@ -306,4 +314,70 @@ button:hover {
    mix-blend-mode: multiply;
    transition: background-color 1s ease;
    z-index: 1000;
+}
+
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  color: #fbffe4;
+}
+
+
+/*.grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.2) 20px,
+    rgba(255, 255, 255, 0.4) 20px,
+    rgba(255, 255, 255, 0.4) 21px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.2) 20px,
+    rgba(255, 255, 255, 0.4) 20px,
+    rgba(255, 255, 255, 0.4) 21px
+  );
+}*/
+
+/*individual pages*/
+
+.mus-content,
+.prg-content,
+.art-content,
+.wrt-content {
+  text-align: center;
+}
+
+.wrt-content {
+  color: #2a1d12;
+}
+
+
+.bio-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.bio-table-wrapper {
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 1px solid #d9f1ca;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+}
+.bio-table {
+  
 }

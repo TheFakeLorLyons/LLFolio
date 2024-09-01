@@ -1,23 +1,15 @@
 (ns portfolio.home
   (:require [reagent.core :as r]
             [reagent.dom :as rdom]
-            [portfolio.helpers.texts :as txt]))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                                        ;                state                ;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(def state (r/atom {:menu-open false
-                    :display-content :landing}))
-
-(def pages [[:a {:href "#home"} "Home"]
-            [:a {:href "#bio"} "Bio"]])
-
-(defn page-list []
-  [:div.page-list
-   [:ol
-    (for [item pages]
-      [:li item])]])
+            [portfolio.helpers.texts :as txt]
+            [portfolio.helpers.links :as lnk]
+            [portfolio.pages.bio :as b]
+            [portfolio.pages.rcv :as rcv]
+            [portfolio.pages.programming :as prg]
+            [portfolio.pages.music :as mus]
+            [portfolio.pages.art :as art]
+            [portfolio.pages.writing :as wrt]
+            [portfolio.helpers.pages :as page]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;            buttons/misc             ;
@@ -25,30 +17,35 @@
 
 (defn menu-button []
   [:button 
-   {:class (when (not (:menu-open @state)) "visible")
-    :on-click #(swap! state update :menu-open not)
-    :style {:margin "20px"}}
+   {:class (when (not (:menu-open @page/state)) "visible")
+    :on-click #(swap! page/state update :menu-open not)
+    :style {:margin "20px"
+            :border "1pt solid #312c36"}}
    ">>"])
 
 (defn back-button []
   [:div
    [:button 
-    {:on-click #(swap! state update :menu-open not)}
+    {:on-click #(swap! page/state update :menu-open not)}
     "<<"]])
 
 (defn menu []
   [:div
-   [page-list]])
+   [page/page-list]])
 
 (defn sidebar []
   [:div.sidebar
-   {:class (when (:menu-open @state) "visible")}
+   {:class (when (:menu-open @page/state) "visible")
+     :style (:sidebar @page/current-styles)}
    [back-button]
    [menu]])
 
 (defn footer []
   [:div.footer
-   [:div "Lorelai Lyons 2024"]])
+   [:div "Lorelai Lyons 2024"]
+   [:div.footer-links
+    [lnk/github]
+    [lnk/linkedIn]]])
 
 (defn heading []
   [:div.heading
@@ -69,19 +66,26 @@
     [txt/home-text-carousel]]])
 
 (defn main-view-container []
-   [:div.main-content
-    (when (= (:display-content @state) :landing)
-      [landing])])
+  [:div.main-content
+   (case (:display-content @page/state)
+     :landing [landing]
+     :bio [b/bio]
+     :rcv [rcv/rcvs]
+     :prg [prg/programming-container]
+     :mus [mus/music-container]
+     :art [art/art-container]
+     :wrt [wrt/writing-container]
+     [:div "Please select a page."])])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;             main-frame              ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defn frame []
-  [:div.layout
+  [:div.layout {:style (:main @page/current-styles)}
    [heading]
    [:div.interactivity
-    (if (:menu-open @state)
+    (if (:menu-open @page/state)
       [sidebar]
       nil)
     [main-view-container]]
