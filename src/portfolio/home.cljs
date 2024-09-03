@@ -9,7 +9,8 @@
             [portfolio.pages.music :as mus]
             [portfolio.pages.art :as art]
             [portfolio.pages.writing :as wrt]
-            [portfolio.helpers.pages :as page]))
+            [portfolio.helpers.pages :as page]
+            [portfolio.helpers.email :as email]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;            buttons/misc             ;
@@ -42,10 +43,8 @@
 
 (defn footer []
   [:div.footer
-   [:div "Lorelai Lyons 2024"]
-   [:div.footer-links
-    [lnk/github]
-    [lnk/linkedIn]]])
+   [:div "Lorelai Lyons - Updated Sep 2024"]
+   [lnk/footer-links]])
 
 (defn heading []
   [:div.heading
@@ -75,6 +74,7 @@
      :mus [mus/music-container]
      :art [art/art-container]
      :wrt [wrt/writing-container]
+     :contact [email/contact-form]
      [:div "Please select a page."])])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
