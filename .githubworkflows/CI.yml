@@ -1,0 +1,46 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main  #or your default branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'  #or your Node.js version
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Build the project
+      run: npx shadow-cljs release app  #or the command to build your project
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build
+        path: resources/public/js  # or the path to your static assets
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Download build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: build
+
+    - name: Deploy static assets
+      run: |
+        rsync -avz --delete resources/public/js/ user@www.lorelailyons.me:/Projects/Clojure/Website/resources/public/
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
