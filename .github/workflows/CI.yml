@@ -41,6 +41,6 @@ jobs:
 
     - name: Deploy static assets
       run: |
-        rsync -avz --delete resources/public/js/ lor@{{ secrets.IP_ADDRESS }}:/Projects/Clojure/Website/resources/public/
+        rsync -avz --delete resources/public/js/ lor@{{ secrets.IP_ADDRESS }}:/Projects/Clojure/Portfolio/resources/public/
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
