@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main  #or your default branch
+      - main
 
 jobs:
   build:
@@ -16,19 +16,19 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'  #or your Node.js version
+        node-version: '16'
     
     - name: Install dependencies
       run: npm install
     
     - name: Build the project
-      run: npx shadow-cljs release app  #or the command to build your project
+      run: npx shadow-cljs release app
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
       with:
         name: build
-        path: resources/public/js  # or the path to your static assets
+        path: resources/public/js
   deploy:
     needs: build
     runs-on: ubuntu-latest
