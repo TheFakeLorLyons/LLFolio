@@ -13,6 +13,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     
+    - name: Set up Clojure
+      run: |
+        curl -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh
+        chmod +x linux-install-1.10.3.896.sh
+        sudo ./linux-install-1.10.3.896.sh
+
+
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
@@ -41,6 +48,6 @@ jobs:
 
     - name: Deploy static assets
       run: |
-        rsync -avz --delete resources/public/js/ user@www.lorelailyons.me:/Projects/Clojure/Website/resources/public/
+        rsync -avz --delete resources/public/js/ lor@www.lorelailyons.me:/Projects/Clojure/Website/resources/public/
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
