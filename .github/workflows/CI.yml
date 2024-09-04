@@ -18,6 +18,11 @@ jobs:
       with:
         node-version: '16'
     
+    - name: Set up Clojure
+      uses: DeLaGuardo/setup-clojure@10.3
+      with:
+        cli: latest
+    
     - name: Install dependencies
       run: npm install
     
