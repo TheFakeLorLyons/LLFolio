@@ -48,11 +48,11 @@ jobs:
       run: |
         mkdir -p ~/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-        chmod 600 ~/.ssh/id_ed25519.pub
+        chmod 600 ~/.ssh/id_ed25519
         ssh-keyscan -H ${{ secrets.IP_ADDRESS }} >> ~/.ssh/known_hosts  
 
     - name: Deploy static assets
       run: |
-        rsync -avz --delete resources/public/js/ root@${{ secrets.IP_ADDRESS }}:/Projects/Clojure/Portfolio/resources/public/
+        rsync -avz --delete resources/public/js/ lor@${{ secrets.IP_ADDRESS }}:/Projects/Clojure/Portfolio/resources/public/
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
