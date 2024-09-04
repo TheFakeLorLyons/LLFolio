@@ -16,8 +16,8 @@ jobs:
     - name: Set up Clojure
       run: |
         curl -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh
-        chmod +x linux-install-1.10.3.896.sh
-        sudo ./linux-install-1.10.3.896.sh
+        chmod +x linux-install.sh
+        sudo ./linux-install.sh
 
 
     - name: Set up Node.js
