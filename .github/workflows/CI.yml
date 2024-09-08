@@ -28,6 +28,7 @@ jobs:
     
     - name: Build the project
       run: npx shadow-cljs release app
+      working-directory: ./www/lorelailyons.me/
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
