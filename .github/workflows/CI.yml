@@ -44,12 +44,13 @@ jobs:
       with:
         name: build
 
-    - name: Deploy static assets
+    - name: Add SSH key
       run: |
         mkdir -p ~/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
         chmod 600 ~/.ssh/id_ed25519
         ssh-keyscan -H ${{ secrets.IP_ADDRESS }} >> ~/.ssh/known_hosts  
+        ssh-add /home/runner/.ssh/id_ed25519
 
     - name: Deploy static assets
       run: |
