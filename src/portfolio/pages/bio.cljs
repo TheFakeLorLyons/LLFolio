@@ -5,6 +5,17 @@
 
 (defonce display-text (r/atom :bio))
 
+(defn r-icon []
+  [:img {:src "/assets/images/ricon.png"
+         :id "clj-icon"
+         :style {:position "fixed"
+                 :top "-2vh"
+                 :right "2vw"
+                 :margin "10px"
+                 :scale "60%"
+                 :opacity ".65"
+                 :display (if (= (:display-content @page/state) :bio) "block" "none")}}])
+
 (defn piano-picture []
   [:div
    [page/zoomable-image "/assets/me&piano.png" "me@piano" "20vw"]])
@@ -79,4 +90,5 @@
   [:div.bio-content 
    [:h1 {:style {:align-items "center"}}
     "Bio"]
+   [r-icon]
    [bio-table]])

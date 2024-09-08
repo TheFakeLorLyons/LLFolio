@@ -10,7 +10,7 @@ innocent wanderers lost among the
 twisted pathways
 meander forward.
 Holding conviction and doubt
-equally within their heats."
+equally within their hearts."
 
    "Insecurity marks each step
 of the soul venturing forth.
@@ -23,7 +23,7 @@ two changeless ways
 present themselves
 to sages who wish to see."
 
-   "Some follow the Way of Death,
+   "Some follow the Way of Death.
 Yearning to embrace Lord Yama.
 Hopes of one day taking form
 as the face of death,
@@ -31,8 +31,8 @@ and becoming death – remain;
 eternal at the edge of time."
 
    "Others follow the Way of Life,
-becoming no one.
-Avoiding form to sustain it.
+and becoming no one -
+avoid form in order to sustain it.
 Persistent eternally,
 giving birth to form,
 as to avoid being captured by it."
@@ -51,11 +51,11 @@ endless search for peace."
 
    "Tranquil, unstirred,
 observing life and death
-with compassion.
-Having stopped looking,
+with compassion;
+having stopped looking,
 finding the great peace
 that marks the heart
-of those who after many kalpas,
+of those who after many kalpas
 have relinquished all paths."])
 
 (defn table-cell [text]

@@ -4,6 +4,15 @@
 
 (defonce current-project (r/atom :pw))
 
+(defn calva-logo []
+  [:img {:src "/assets/images/calvaicon.png"
+         :id "clj-icon"
+         :style {:position "fixed"
+                 :top "3vh"
+                 :right "2vw"
+                 :margin "10px" 
+                 :display (if (= (:display-content @page/state) :prg) "block" "none")}}])
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;            image assets             ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -326,7 +335,7 @@
          [:div.sp-prg-heading-column
           [:div.sp-prg-heading-cell
            [:h6 {:style {:font-weight "bold"}} "Completed MVP Applications"]]
-          [:div.prg-heading-table-row {:style {:gap "5vw"}}
+          [:div.prg-heading-table-row {:style {:gap "5vw"}} 
            [:div.sp-prg-heading-cell
             [:a {:href "#pw" :on-click #(reset! current-project :pw)}
              "PW Manager"]]
@@ -351,7 +360,7 @@
          {:style {:display "prg-table-cell"
                   :text-align "center"}}
          [:h6 {:style {:font-weight "bold"}} "Description"]
-         [:p {:style {:font-size "16pt"}} (nth (text-content @current-project) 1)]]
+         [:p {:style {:font-size "14pt"}} (nth (text-content @current-project) 1)]]
         [:div.sp-prg-table-cell
          {:style {:display "prg-table-cell"
                   :text-align "center"}}
@@ -374,6 +383,7 @@
      {:style {:display "prg-heading-cell"
               :text-align "center"}}
      [:h4 (nth (text-content @current-project) 0)]
+     [calva-logo]
      [:h6 "Below are examples of some of my work, alongside a description of the techniques and technologies involved."]
      [:h6 {:style {:font-size "16pt"}} " Use the links under \"completed applications\" to see my various projects."]]]])
 

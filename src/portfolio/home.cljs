@@ -14,7 +14,34 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;            buttons/misc             ;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn clj-logo []
+  [:img {:src "/assets/images/cljicon.png"
+         :id "clj-icon"
+         :style {:position "fixed"
+                 :top "0"
+                 :right "0"
+                 :margin "10px"
+                 :scale "75%"
+                 :display (if (= (:display-content @page/state) :landing) "block" "none")}}])
+
+(defn reagent-icons []
+  [:div
+   [:img {:src "/assets/images/reagenticon2.png"
+          :id "reagent-icon2"
+          :style {:position "fixed"
+                  :bottom "4vh"
+                  :left "4vw"
+                  :margin "10px"
+                  :display (if (= (:display-content @page/state) :landing) "block" "none")}}]
+   [:img {:src "/assets/images/reagenticon.png"
+          :id "reagent-icon"
+          :style {:position "fixed"
+                  :bottom "4vh"
+                  :left "4vw"
+                  :margin "10px"
+                  :display (if (= (:display-content @page/state) :landing) "block" "none")}}]])
 
 (defn menu-button []
   [:button 
@@ -60,9 +87,11 @@
     [:h1 {:style {:font-weight "bold"}}
      "Lorelai Lyons"]
     [:h4 {:style {:opacity "50%"}}
-     "Programming"]]
+     "Programming"]
+    [clj-logo]]
    [:div.landing-container
-    [txt/home-text-carousel]]])
+    [txt/home-text-carousel]]
+   [reagent-icons]])
 
 (defn main-view-container []
   [:div.main-content
