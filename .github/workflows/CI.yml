@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '18'
     
     - name: Set up Clojure
       uses: DeLaGuardo/setup-clojure@10.3
@@ -56,8 +56,14 @@ jobs:
         eval $(ssh-agent -s)
         ssh-add ~/.ssh/id_ed25519
 
+    - name: Build project
+      run: npx shadow-cljs release app 
+
     - name: Deploy static assets
       run: |
         rsync -avz --delete resources/public/js/ lor@${{ secrets.IP_ADDRESS }}:/Projects/Clojure/Portfolio/resources/public/
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Restart server
+      run: ssh lor@${{ secrets.IP_ADDRESS }} 'sudo systemctl reload nginx'
