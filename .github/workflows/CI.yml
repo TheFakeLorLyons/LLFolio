@@ -23,6 +23,9 @@ jobs:
       with:
         cli: latest
     
+    - name: List Directory Contents
+      run: ls -a
+
     - name: Install dependencies
       run: npm install
     
@@ -55,9 +58,6 @@ jobs:
       run: |
         eval $(ssh-agent -s)
         ssh-add ~/.ssh/id_ed25519
-
-    - name: Build project
-      run: npx shadow-cljs release app 
 
     - name: Deploy static assets
       run: |
