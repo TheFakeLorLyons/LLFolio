@@ -127,52 +127,80 @@
                                         ;                Music                ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(def music-history
-  "Alongside my degree in philosophy, I have a second bachelors degree in music performance.
-   In university I mastered the fundamentals of guitar and obtained her degree in classical guitar performance.
-   During this degree she was required to take keyboarding classes and pass a “piano proficiency exam”.
-   In addition to my piano classes I studied piano in private lessons and in my own time.
+(def teacher-links
+  [{:url "http://www.phillipdefremery.com/bio.php" :text "Phillip de Fremery"}
+   {:url "https://grotonhill.org/faculty/berit-strong/" :text "Berit Strong"}
+   {:url "https://jeromemouffe.com/" :text "Jerome Mouffe"}
+   {:url "https://danielacsadi.com/" :text "Daniel Ascadi"}])
 
-   Upon graduating from BSU, I moved to Denver, Colorado and began teaching a variety of instruments including
+(defn links-format [url text]
+  [:a {:href url
+       :target "_blank"
+       :rel "noopener noreferrer"}
+   text])
+
+(defn formatted-links-list [links]
+  (let [count (count links)]
+    [:div
+     (for [[idx {:keys [url text]}] (map-indexed vector links)]
+       [:span
+        (when (not (zero? idx))
+          (if (= (dec count) idx)
+            (str ", and ")  ;; "and" before the last link
+            ", "))
+        [links-format url text]]) "."]))
+
+(def music-history
+  ["In addition to my philosophy degree, I have a second bachelors in music performance.
+   In university I mastered the fundamentals of guitar and obtained a degree in classical guitar performance.
+   While I majored in guitar, I also studied the piano extensively in both class settings and private lessons."
+
+   "Upon graduating from BSU, I moved to Denver, CO and began teaching a variety of instruments including
    piano, guitar, ukulele, and voice to a wide range of students of different background, ages, and abilities
    in both one-on-one and group settings. During this time I also played in several duets with another
    guitarist, a flute player, and a violinist playing  gigs for historical societies, churches, and various events
-   both to supplement my income and also for the fun of it.
+   both to supplement my income and also for the fun of it."
 
-   I later moved back to Massachusetts to pursue work as a Peer Support Specialist for a variety of reasons.
-   I continue to practice daily on both piano and guitar and teaches private lessons in her own home still to
-   individual students interested in learning. Soon Lorelai will be performing environmental music for patients at
-   Massachusetts General Hospital, and plans to teach private lessons and perform on both guitar and piano professionally
-   for the rest of her life. Below are excerpts of her playing at home on her piano and guitar. Further video of Lorelai
-   will be provided in the “video” section of this website in upper-left hand corner of the page.
-   Please enjoy these selections of my favorite pieces.")
+   "I still play music as often as I possibly can, but have been spending all my time trying to become as skilled
+    a programmer as possible. I have a passion for pedagogy and am interested in programming applications to
+    facilitate music education and community musical organizing via VR and AR."])
 
 
 (def music-study
-  "Lorelai has studied the guitar extensively such teachers as: 
+  [[:div
+    "Lorelai has studied the guitar extensively such teachers as:"
+    [formatted-links-list teacher-links]]
+   
+   "She has participated in public masterclasses and lessons with famed guitarists:
+   Oscar Ghiglia, Elliot Fisk, Maarten Stragier, David Russel, Pavel Steidl, Duo Miles, and Frank Wallace."
 
-   Phillip de Fremery, Berit Strong, Jerome Mouffe, and Daniel Ascadi.
-
-   She has participated in public masterclasses and lessons with famed guitarists:
-   Oscar Ghiglia, Elliot Fisk, Maarten Stragier, David Russel, Pavel Steidl, Duo Miles, and Frank Wallace.
-
-   Additionally, Lorelai has performed both solo, and in groups, and in world premiers
-   for the Boston Classical Guitar Society both for Roland Dyens, and as a soloist for Carlo Domeniconi")
+   "Additionally, Lorelai has performed both solo, and in groups, and in world premiers
+   for the Boston Classical Guitar Society both for Roland Dyens, and as a soloist for Carlo Domeniconi"])
 
 (def musical-influences
-  "A final note on influences:
-
-   I am interested in all creative endeavors and appreciate music of all styles;
+  ["A final note on influences:"
+   
+   "I am interested in all creative endeavors and appreciate music of all styles;
    but will always love classical and jazz music most of all.
    Casually I love listening to most music including electronic music (specifically ‘chiptune’),
-   as well as punk rock, and alternative music.
+   as well as punk rock, and alternative music."
 
-   Some of my favorite classical musicians are: Claude Debussy, Clara Schumann, Franz Schubert,
+   "Some of my favorite classical musicians are: Claude Debussy, Clara Schumann, Franz Schubert,
    Fernando Sor, Leopold Godowsky, Juaquin Rodrigo,   Astor Piazzolla, Augustine Barrios Mangore
-   and of course - Johann Sebastian Bach…
+   and of course - Johann Sebastian Bach…"
 
-   Some of my favorite jazz musicians are: Ryu Fukui, Art Tatum, Bill Evans,
-   Joe Pass, Luiz Bonfa, Tom Jobim, Carlos Barbosa-Lima, and Paulinho Nogueira. ")
+   "Some of my favorite jazz musicians are: Ryu Fukui, Art Tatum, Bill Evans,
+   Joe Pass, Luiz Bonfa, Tom Jobim, Carlos Barbosa-Lima, and Paulinho Nogueira. "])
+
+
+(def soundcloud-link
+  "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1109952148&color=%23f681c5&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true")
+
+(def google-drive-link
+  "https://drive.google.com/drive/folders/1XKOCVv3KPyip_rFcHnSmc-lnWkOVUlSt?usp=drive_link")
+
+(def google-drive-link-text
+  "If you enjoyed my music, please feel free to take a look at this google drive where I upload lots of my favorite pieces.")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;                  art                ;

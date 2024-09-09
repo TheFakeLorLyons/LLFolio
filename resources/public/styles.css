@@ -173,15 +173,6 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.prg-content,
-.bio-content {
-  text-align: center;
-}
-
-
-
-
-
 
 /*Error messages if improper login*/
 .error-message {
@@ -441,19 +432,28 @@ a.extras-button {
   color: rgb(197, 179, 179); 
 }
 
-
+.mus-table-wrapper,
+.art-table-wrapper,
+.bio-table-wrapper {
+  height: auto;
+  display: flex;
+  gap: 10vw;  
+  overflow: auto;
+  padding: 10px;
+}
+.mus-content,
 .bio-content {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   text-align: center;
   align-items: center;
-  width: vw;
 }
+.mus-table-wrapper,
 .bio-table-wrapper {
-  display: flex;
-  gap: 10vw;
+
 }
+.mus-table-cell,
 .bio-table-cell {
   width: 50vw;
   text-align: center;
@@ -471,11 +471,13 @@ a.extras-button {
   transition: transform 0.6s ease;
   box-shadow: 2px 0 5px rgba(1,0,1,0.5);
 }
+
 #bioCarousel .carousel-control-prev:hover, 
 #bioCarousel .carousel-control-next:hover {
 
   color: rgb(197, 179, 179); 
 }
+
 #bioCarousel .carousel-inner,
 #bioCarousel .carousel-inner {
   border-radius: 5%/10%;
@@ -485,11 +487,13 @@ a.extras-button {
   width: 40vw;  
   height: 60vh;
 }
+#musCarousel .carousel-inner, 
 #bioCarousel .carousel-inner {
   border: 1px solid #15062880;
   box-shadow: 2px 0 5px rgba(1,0,1,0.5);
   background-color: #b699db18;
 }
+#musCarousel .carousel-item,
 #bioCarousel .carousel-item {
   align-items: center;
   align-content: center;
@@ -500,35 +504,21 @@ a.extras-button {
   width: 100%;
 }
 
-.wrt-content
-.mus-content,
-.wrt-content {
-  text-align: center;
-}
-.mus-content {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
 .wrt-content {
   color: #2a1d12;
+  text-align: center;
 }
+.mus-container,
 .wrt-container,
 .bio-container {
   overflow: auto;
   scrollbar-width: none;
   margin: 0 auto; 
   box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  align-items: center;
+  width: 90%;
+}
 
-}
-.art-table-wrapper,
-.bio-table-wrapper {
-  height: auto;
-  
-  overflow: auto;
-  padding: 10px;
-}
 
 
 
