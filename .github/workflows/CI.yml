@@ -66,8 +66,8 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
-        source: "path/to/build/**/*"
-        target: "/path/on/server"
+        source: /resources/public/js
+        target: /www/lorelailyons.me
 
     - name: Restart server
       run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.IP_ADDRESS }} 'sudo systemctl reload nginx'
