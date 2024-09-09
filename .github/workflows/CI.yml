@@ -66,7 +66,7 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
-        source: /resources/public/js
+        source: /resources/public/js/**/*
         target: /www/lorelailyons.me
 
     - name: Restart server
