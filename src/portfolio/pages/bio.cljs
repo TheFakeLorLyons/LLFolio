@@ -25,6 +25,13 @@
 (defn never-give-up []
   [:div
    [page/zoomable-image "/assets/nevergiveup.png" "give-up" "45vw"]])
+(defn vegan-btw []
+  [:div
+   [:video {:controls true
+            :style {:width "100%"}}
+    [:source {:src "/assets/gifs/vegan-btw.mp4" :type "video/mp4"}]
+    [:source {:src "/assets/gifs/vegan-btw.webm" :type "video/webm"}]
+    "Your browser does not support the video tag."]])
 
 (defn bio-carousel []
   [:div.carousel {:id "bioCarousel"
@@ -40,6 +47,8 @@
      [never-give-up]]
     [:div.carousel-item {:style {:margin-top "3.5vh"}}
      [hiking-worm]]
+    [:div.carousel-item {:style {:margin-top "3.5vh"}}
+     [vegan-btw]]
     [:a.carousel-control-prev {:href "#bioCarousel"
                                :role "button"
                                :data-slide "prev"}

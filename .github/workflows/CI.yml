@@ -59,5 +59,15 @@ jobs:
         eval $(ssh-agent -s)
         ssh-add ~/.ssh/id_ed25519
 
+    - name: Deploy to server
+      uses: appleboy/scp-action@v0.1.0
+      with:
+        host: ${{ secrets.IP_ADDRESS }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        source: "path/to/build/**/*"
+        target: "/path/on/server"
+
     - name: Restart server
-      run: ssh lor@${{ secrets.IP_ADDRESS }} 'sudo systemctl reload nginx'
+      run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.IP_ADDRESS }} 'sudo systemctl reload nginx'

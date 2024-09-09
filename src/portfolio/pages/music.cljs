@@ -14,10 +14,10 @@
     "Your browser does not support the audio element."]])
 
 (defn piano-guitar-drawing []
-  [:div {:style {:width "10vw" ; Adjust width as needed
-                 :height "auto" ; Keep aspect ratio
-                 :display "block"}}
-   [page/zoomable-image "/assets/drawings/guitar-piano.png" "gpd" "20vw"]])
+  [:div 
+   [:img {:style {:width "8vw"
+                  :height "auto"}
+          :src "/assets/drawings/guitar-piano.png"}]])
 
 (def audio-files
   [{:src "/assets/music/ADayInTokyo.mp3" :title "\"A Day in Tokyo\""}
@@ -102,8 +102,7 @@
      {:style {:display "flex"
               :width "100%"
               :height "100%"
-              :gap "3vw"
-              :align-items "center"}}
+              :gap "3vw"}}
      [:div.mus-table-cell
       {:style {:display "table-cell"}}
       [mus-carousel]]
@@ -111,12 +110,14 @@
       [:div.mus-heading {:style
                          {:display "flex"
                           :gap "2vw"
-                          :justify-content "center"}}
+                          :justify-content "center"
+                          :height "fill"
+                          :align-items "flex-start"}}
        [:a {:href "#music-background" :on-click #(reset! display-text :m-history)
             :color "#fff678"} "Musical Background"]
        [:a {:href "#teachers" :on-click #(reset! display-text :m-teachers)
             :color "#fff678"} "Teachers"]
-       [:a {:style {:margin-bottom "3vh"}
+       [:a {:style {:margin-bottom "2vh"}
             :href "#influences" :on-click #(reset! display-text :m-influences)
             :color "#fff678"} "Musical Influences"]]
       (when (= @display-text :m-history)

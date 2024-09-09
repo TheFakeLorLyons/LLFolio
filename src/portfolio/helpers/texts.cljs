@@ -151,15 +151,16 @@
         [links-format url text]]) "."]))
 
 (def music-history
-  ["In addition to my philosophy degree, I have a second bachelors in music performance.
+  ["My second bachelors is in music performance, I studied pedagogy and analysis primarily.
    In university I mastered the fundamentals of guitar and obtained a degree in classical guitar performance.
-   While I majored in guitar, I also studied the piano extensively in both class settings and private lessons."
+   While I majored in guitar, I also studied the piano extensively in both class settings and private lessons.
+   Additionally, Lorelai has performed both solo, and in groups, and in world premiers
+   for the Boston Classical Guitar Society both for Roland Dyens, and as a soloist for Carlo Domeniconi"
 
-   "Upon graduating from BSU, I moved to Denver, CO and began teaching a variety of instruments including
+   "After graduating, I moved to Denver, CO and began teaching a variety of instruments including
    piano, guitar, ukulele, and voice to a wide range of students of different background, ages, and abilities
    in both one-on-one and group settings. During this time I also played in several duets with another
-   guitarist, a flute player, and a violinist playing  gigs for historical societies, churches, and various events
-   both to supplement my income and also for the fun of it."
+   guitarist, a flute player, and a violinist playing  gigs for historical societies, churches, etc."
 
    "I still play music as often as I possibly can, but have been spending all my time trying to become as skilled
     a programmer as possible. I have a passion for pedagogy and am interested in programming applications to
@@ -168,14 +169,17 @@
 
 (def music-study
   [[:div
-    "Lorelai has studied the guitar extensively such teachers as:"
-    [formatted-links-list teacher-links]]
+    [:h5 "I studied the guitar extensively with:"]
+    [formatted-links-list teacher-links] "Jerome in particular has played a huge role in my life
+                                          and acted as my biggest role mode musically and in general
+                                          throughout my undergraduate experience. I am forever grateful
+                                          for all he has taught me, and I look back upon our lessons
+                                          every time I sit down to play music (which is daily)."]
    
-   "She has participated in public masterclasses and lessons with famed guitarists:
+   "I've also participated in public masterclasses and lessons with famed guitarists:
    Oscar Ghiglia, Elliot Fisk, Maarten Stragier, David Russel, Pavel Steidl, Duo Miles, and Frank Wallace."
 
-   "Additionally, Lorelai has performed both solo, and in groups, and in world premiers
-   for the Boston Classical Guitar Society both for Roland Dyens, and as a soloist for Carlo Domeniconi"])
+   ""])
 
 (def musical-influences
   ["A final note on influences:"

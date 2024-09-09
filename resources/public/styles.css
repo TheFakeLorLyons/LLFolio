@@ -519,7 +519,11 @@ a.extras-button {
   width: 90%;
 }
 
-
+.mus-container {
+  display: flex;
+  height: 70vh;
+  align-items: center;
+}
 
 
 .wrt-table {
