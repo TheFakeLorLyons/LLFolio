@@ -49,7 +49,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: build
-        path: resources/public/js
+        path: resources/public/
         
     - name: Add SSH key
       run: |
