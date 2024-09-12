@@ -42,13 +42,15 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Install sshpass
+      run: sudo apt-get install -y sshpass
+
     - name: Download build artifacts
       uses: actions/download-artifact@v3
       with:
         name: build
         path: resources/public/js
         
-
     - name: Add SSH key
       run: |
         mkdir -p ~/.ssh
@@ -63,7 +65,11 @@ jobs:
 
     - name: Deploy to server using rsync
       run: |
-        rsync -avz --delete -e "ssh -i ~/.ssh/id_ed25519 -p 22" resources/public/js/ ${{ secrets.SSH_USERNAME }}@${{ secrets.IP_ADDRESS }}:/var/www/lorelailyons.me/html
+        sshpass -p "${{ secrets.SERVER_PASSWORD }}" rsync -avz --delete \
+          -e "ssh -i ~/.ssh/id_ed25519 -p 22" \
+          --rsync-path="sudo rsync" \
+          resources/public/js/ \
+          ${{ secrets.SSH_USERNAME }}@${{ secrets.IP_ADDRESS }}:/var/www/lorelailyons.me/html
 
 
     - name: Restart server
