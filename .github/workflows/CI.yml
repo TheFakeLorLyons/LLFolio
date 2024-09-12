@@ -63,14 +63,14 @@ jobs:
         eval $(ssh-agent -s)
         ssh-add ~/.ssh/id_ed25519
 
+    - name: Upload build artifacts to server
+      run: |
+        sshpass -p "${{ secrets.SERVER_PASSWORD }}" scp -r -P 22 resources/public/js/ ${{ secrets.SSH_USERNAME }}@${{ secrets.IP_ADDRESS }}:/tmp/build/
+
     - name: Deploy to server using rsync
       run: |
-        sshpass -p "${{ secrets.SERVER_PASSWORD }}" rsync -avz --delete \
-          -e "ssh -i ~/.ssh/id_ed25519 -p 22" \
-          --rsync-path="sudo rsync" \
-          resources/public/js/ \
-          ${{ secrets.SSH_USERNAME }}@${{ secrets.IP_ADDRESS }}:/var/www/lorelailyons.me/html
-
+        ssh -i ~/.ssh/id_ed25519 -p 22 ${{ secrets.SSH_USERNAME }}@${{ secrets.IP_ADDRESS }} \
+          "sudo rsync -avz --delete /tmp/build/resources/public/js/ /var/www/lorelailyons.me/html"
 
     - name: Restart server
       run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.IP_ADDRESS }} 'sudo systemctl reload nginx'
