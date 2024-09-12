@@ -59,15 +59,10 @@ jobs:
         eval $(ssh-agent -s)
         ssh-add ~/.ssh/id_ed25519
 
-    - name: Deploy to server
-      uses: appleboy/scp-action@v0.1.0
-      with:
-        host: ${{ secrets.IP_ADDRESS }}
-        username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: 22
-        source: /resources/public/js/**/*
-        target: /www/lorelailyons.me
+    - name: Deploy to server using rsync
+      run: |
+        rsync -avz --delete -e "ssh -i ~/.ssh/id_ed25519 -p 22" resources/public/js/ ${{ secrets.SSH_USERNAME }}@${{ secrets.IP_ADDRESS }}:/var/www/lorelailyons.me/html
+
 
     - name: Restart server
       run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.IP_ADDRESS }} 'sudo systemctl reload nginx'

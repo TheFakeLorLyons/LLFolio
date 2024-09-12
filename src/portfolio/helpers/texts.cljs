@@ -77,12 +77,12 @@
 
    "I enjoyed teaching music, but found that I had a greater passion for connecting with the students and
     being a positive influence in their lives. In 2017 I decided to pursue a change and provide social support
-    to people struggling with mental health issues, During this time I spent most of my time learning to code."
+    to people struggling with mental health issues, During this time I spent most of my personal time learning to code."
    
-   "I reviewed the foundations of programming and joined a company called Revature that trained me in
-    enterprise software development. I created Angular applications as a leader of a team of ~20 people. I made
-    the decision to return to school because I wanted to continue my formal education in CS, and am now on track
-    to begin my masters in August of 2025."])
+   "I joined a company called Revature that trained me in enterprise software development. 
+    I created Angular applications as a leader of a team of ~20 people. I made
+    the decision to return to school because I wanted to continue my formal education 
+    in CS, and am now on track to begin my masters in August of 2025."])
 
 (def current
   [[:h4 {:style {:font-weight "bold"
@@ -102,7 +102,7 @@
     can."
     
     "I am actively seeking any opportunityies to code on a team and am very interested in any internships
-    or junior/mid level roles in any startup or enterprise environment. Please reach out at my email located in the
+    or full-time opportunities for startup or enterprise environments. Please reach out at my email located in the
     site footer."])
 
 
@@ -122,6 +122,26 @@
     my toes in 'Quil' - which is a 'Clojure package made for generating interactive drawings and animations'. This
     exposure to generating art through code was amazing and something I am sure to explore further in the future. When
     I do I will be sure to update this site with that code."])
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                        ;            Programming              ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(def clay-text
+  (str "I recently joined the Scicloj mentorship program and will be assisting them in documenting a data visualization
+      tool that allows \"visual data exloration and documents from source code\" (from the site). I am currently practicing 
+      reagent on several applications, including a data visualization app that will fetch information from steam, and similar,
+      APIs in order to recommend games based on custom queries."))
+
+(def bci-text
+  "I am very interested in Brain-Computer interfaces, and plan on continuing to aim to contribute to the development
+      of BCI hardware and applications. I am particualrly interested in exploring BCI's and VR/AR experiences.
+      I also have a passion for data visulizations and communications, and hope to present and speak on information
+      pertaining to Clojure and BCIs in the future.")
+
+(def school-study
+  "Another thing I can place here")
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;                Music                ;

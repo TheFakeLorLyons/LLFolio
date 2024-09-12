@@ -626,6 +626,24 @@ a.extras-button {
   width: 60vw;
   text-align: center;
 }
+.prg-left-subheading-buttons,
+.prg-right-subheading-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+
+#prg-button {
+  padding: .5ex;
+  border-radius: 8%/45%;
+  background-color: #fff67885; 
+}
+#prg-button:hover {
+  color: #ffffff;
+  background-color: #fff678bc; 
+}
+
 .sp-prg-table-cell {
   border: 1pt solid #fff;
   border-radius: 10% / 40%;

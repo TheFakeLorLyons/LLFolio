@@ -1,6 +1,7 @@
 (ns portfolio.pages.programming
   (:require  [reagent.core :as r]
-             [portfolio.helpers.pages :as page]))
+             [portfolio.helpers.pages :as page]
+             [portfolio.helpers.texts :as txt]))
 
 (defonce current-project (r/atom :pw))
 
@@ -10,7 +11,7 @@
          :style {:position "fixed"
                  :top "3vh"
                  :right "2vw"
-                 :margin "10px" 
+                 :margin "10px"
                  :display (if (= (:display-content @page/state) :prg) "block" "none")}}])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -19,13 +20,13 @@
 ;pw-manager
 (defn pw-login []
   [:div
-  [page/zoomable-image "/assets/lpm.jpg" "pw-login" "35vw"]])
+   [page/zoomable-image "/assets/lpm.jpg" "pw-login" "35vw"]])
 (defn pw-home []
-    [:div
-  [page/zoomable-image "/assets/lpmpwhome.jpg" "pw-home" "35vw"]])
+  [:div
+   [page/zoomable-image "/assets/lpmpwhome.jpg" "pw-home" "35vw"]])
 (defn pw-encrypted []
   [:div
-  [page/zoomable-image "/assets/encryptedpws.jpg" "pw-enc" "35vw"]])
+   [page/zoomable-image "/assets/encryptedpws.jpg" "pw-enc" "35vw"]])
 
 ;cosminis
 (defn cos-erd []
@@ -61,27 +62,11 @@
   [:div
    [page/zoomable-image "/assets/contacts/cont-edit-2.png" "cont-edit2" "35vw"]])
 
-(def clay-text
-  (str "I recently joined the Scicloj mentorship program and will be assisting them in documenting a data visualization
-      tool that allows \"visual data exloration and documents from source code\" (from the site). I am currently practicing 
-      reagent on several applications, including a data visualization app that will fetch information from steam, and similar,
-      APIs in order to recommend games based on custom queries."))
-
-(def bci-text
-  "I am very interested in Brain-Computer interfaces, and plan on continuing to aim to contribute to the development
-      of BCI hardware and applications. I am particualrly interested in exploring BCI's and VR/AR experiences.
-      I also have a passion for data visulizations and communications, and hope to present and speak on information
-      pertaining to Clojure and BCIs in the future.")
-
-(def school-study
-  "Another thing I can place here")
-
-
 ;c-projects
 (defn ard-buzz []
   [:video {:width "33%"
            :controls true}
-   [:source {:src "/assets/vids/arduino-buzzer.mov" 
+   [:source {:src "/assets/vids/arduino-buzzer.mov"
              :type "video/mp4"}]
    "Your browser does not support the video tag."])
 (defn ard-lights []
@@ -92,7 +77,7 @@
              :type "video/mp4"}]
    "Your browser does not support the video tag."])
 (defn nbodies []
-  [:video {:width "90%" 
+  [:video {:width "90%"
            :style {:transform "translateY(4.5vh)"}
            :controls true}
    [:source {:src "/assets/vids/nbodies.mov"
@@ -114,15 +99,15 @@
    [:div.carousel-inner {:style {:font-size "16pt"}}
     [:div.carousel-item.active
      [:div {:style {:transform "translateY(7.5vh)"}}
-       [pw-login]]]
+      [pw-login]]]
     [:div.carousel-item
      [:div {:style {:height "25vh"}}
       [pw-home]]]
-        [:div.carousel-item
+    [:div.carousel-item
      [:div {:style {:transform "translateY(4.5vh)"}}
       [pw-encrypted]]]
-    [:a.carousel-control-prev {:href "#pwCarousel" 
-                               :role "button" 
+    [:a.carousel-control-prev {:href "#pwCarousel"
+                               :role "button"
                                :data-slide "prev"}
      [:span.carousel-control-prev-icon {:aria-hidden "true"}]
      [:span.sr-only "Previous"]]
@@ -132,12 +117,12 @@
 
 (defn cos-carousel []
   [:div.cos.text.carousel {:id "cosCarousel"
-                            :data-ride "tcarousel"
-                            :class "carousel slide"
-                            :style {:display "flex"
-                                    :justify-content "center"
-                                    :align-items "center"
-                                    :padding-right "5vw"}}
+                           :data-ride "tcarousel"
+                           :class "carousel slide"
+                           :style {:display "flex"
+                                   :justify-content "center"
+                                   :align-items "center"
+                                   :padding-right "5vw"}}
    [:div.carousel-inner {:style {:font-size "16pt"}}
     [:div.carousel-item.active
      [:div.costext {:style {:transform "translateY(7.5vh)"}} [cos-erd]]]
@@ -230,13 +215,13 @@
    [:div.carousel-inner {:style {:font-size "16pt"}}
     [:div.carousel-item.active
      [:div.conttext
-      [:p clay-text]]]
+      [:p txt/clay-text]]]
     [:div.carousel-item
      [:div
-      [:p bci-text]]]
+      [:p txt/bci-text]]]
     [:div.carousel-item
      [:div
-      [:p school-study]]]
+      [:p txt/school-study]]]
     [:a.carousel-control-prev {:href "#gCarousel"
                                :role "button"
                                :data-slide "prev"
@@ -251,6 +236,11 @@
                                         ;             table body              ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(defn heading []
+  [:div
+   [:h2 {:style {:font-weight "bold"}} "Projects"]
+   [:h6 "Select a project below to view further details, click the title for relevant links."]])
+
 (defn carousel-component [project]
   (case project
     :pw [pw-carousel]
@@ -262,7 +252,7 @@
     [:div "No carousel available"]))
 
 (def pw-proj-info
-  [[:a {:href "https://github.com/TheFakeLorLyons/password-manager" :target "_blank"} 
+  [[:a {:href "https://github.com/TheFakeLorLyons/password-manager" :target "_blank"}
     [:h5 {:style {:font-weight "bold"}} "Password Manager"]]
    "This Application allows users to perform basic CRUD operations on any number of
     passwords. Users could choose to export the passwords to an encrypted csv for 
@@ -271,7 +261,7 @@
     Flowstorm, shadow-cljs, Hiccup, CSS, JS, Calva"])
 
 (def cos-proj-info
-  [[:div [:h5 {:style {:font-weight "bold"}}"\"Cosminis\""]]
+  [[:div [:h5 {:style {:font-weight "bold"}} "\"Cosminis\""]]
    "Cosminis is a gameified social media application that allowed users to interact
     with each other and their virtual companions in a digital metaverse. I was one of
     3 team leaders, and responsible for our payment screens and more."
@@ -279,7 +269,7 @@
     SQL, Azure, NPM, Node.js, CSS, git/github, BASH, Notepad++"])
 
 (def contacts-proj-info
-  [[:a {:href "https://thefakelorlyons.github.io/contacts_manager.github.io/" :target "_blank"} 
+  [[:a {:href "https://thefakelorlyons.github.io/contacts_manager.github.io/" :target "_blank"}
     [:h5 {:style {:font-weight "bold"}} "Contacts Application"]]
    "This is a contacts management appplication that I built using vanilla HTML and Javascript as well as CSS.
     It allows users to perform CRUD operations and have their entries stored in local storage, simulating a database."
@@ -295,7 +285,7 @@
     Serial Data Processing, Sorting Algorithms, IntelliJ"])
 
 (def in-prog
-  [[:a {:href "https://github.com/TheFakeLorLyons/" :target "_blank"} 
+  [[:a {:href "https://github.com/TheFakeLorLyons/" :target "_blank"}
     [:h5 {:style {:font-weight "bold"}} "In Progress Applications and Study"]]
    "This website will continue to be a work in progress as I update it with alongside my education and career.
     I am currently continuing to practice my skills with Clojure and CLJSin several different applications mentioned
@@ -304,7 +294,7 @@
     git/github, BASH, Notepad++"])
 
 (def fut-text
-  [[:a {:href "https://github.com/TheFakeLorLyons/" :target "_blank"} 
+  [[:a {:href "https://github.com/TheFakeLorLyons/" :target "_blank"}
     [:h5 {:style {:font-weight "bold"}} "Future Interests and Goals"]]
    "My biggest passion is in constructing nice looking and user friendly interfaces for any client facing software.
     I am particularly interested in studying Brain-Computer interfaces and Brainflow, and hope to one day use Clojure
@@ -322,40 +312,65 @@
     :future fut-text
     "No content available"))
 
+(defn projects []
+  [:div.prg-left-subheading-buttons
+   [:div.prg-heading-table-row {:style {:flex-direction "column"
+                                        :gap "1.5ex"}}
+    [:div.sp-prg-heading-cell
+     [:a {:href "#pw" :on-click #(reset! current-project :pw)
+          :id "prg-button"}
+      "PW Manager"]]
+    [:div.sp-prg-heading-cell
+     [:a {:href "#cos" :on-click #(reset! current-project :cos)
+          :id "prg-button"}
+      "\"Cosminis\""]]]
+   [:div.prg-heading-table-row {:style {:flex-direction "column"
+                                        :gap "1.5ex"}}
+    [:div.sp-prg-heading-cell
+     [:a {:href "#cont" :on-click #(reset! current-project :cont)
+          :id "prg-button"}
+      "Contacts Application"]]
+    [:div.sp-prg-heading-cell
+     [:a {:href "#card" :on-click #(reset! current-project :card)
+          :id "prg-button"}
+      "C / Arduino / Java"]]]])
+
+(defn current-fut-projects []
+  [:div.prg-right-subheading-buttons
+   [:div.sp-prg-heading-cell
+    [:a {:href "#in-prog" :on-click #(reset! current-project :in-prog)
+         :id "prg-button"}
+     "Work Currently in Progress"]]
+   [:div.sp-prg-heading-cell
+    [:a {:href "#future" :on-click #(reset! current-project :future)
+         :id "prg-button"}
+     "Future Interests & Aspirations"]]])
+
+(defn menu []
+  [:div.menu-div {:style {:display "flex"
+                          :justify-content "space-evenly"
+                          :gap "10vw"
+                          :margin-top "2vh"}}
+   [:div.prg-menu-proj
+    [projects]]
+   [:div.prg-menu-fut {:style {:display "flex"
+                               :justify-content "center"
+                               :align-items "center"}}
+    [current-fut-projects]]])
+
 (defn prg-table []
-  [:div.prg-container 
+  [:div.prg-container
    [:div.prg-table-wrapper
-    [:div.prg-table 
+    [:div.prg-table
      [:div.prg-table-row
       {:style {:display "prg-table-row"}}
       [:div.prg-table-cell
-       [:div.sp-prg-table-column 
+       [:div.sp-prg-table-column
         [:div.sp-prg-table-cell {:style {:display "flex"
                                          :text-align "center"}}
-         [:div.sp-prg-heading-column
-          [:div.sp-prg-heading-cell
-           [:h6 {:style {:font-weight "bold"}} "Completed MVP Applications"]]
-          [:div.prg-heading-table-row {:style {:gap "5vw"}} 
-           [:div.sp-prg-heading-cell
-            [:a {:href "#pw" :on-click #(reset! current-project :pw)}
-             "PW Manager"]]
-           [:div.sp-prg-heading-cell
-            [:a {:href "#cos" :on-click #(reset! current-project :cos)}
-             "\"Cosminis\""]]]
-          [:div.prg-heading-table-row {:style {:gap "5vw"}}
-           [:div.sp-prg-heading-cell
-            [:a {:href "#cont" :on-click #(reset! current-project :cont)}
-             "Contacts Application"]]
-           [:div.sp-prg-heading-cell
-            [:a {:href "#card" :on-click #(reset! current-project :card)}
-             "C / Arduino / Java"]]]
-          [:div.sp-prg-heading-column
-           [:div.sp-prg-heading-cell
-            [:a {:href "#in-prog" :on-click #(reset! current-project :in-prog)}
-             "Work Currently in Progress"]]
-           [:div.sp-prg-heading-cell
-            [:a {:href "#future" :on-click #(reset! current-project :future)}
-             "Future Interests & Aspirations"]]]]]
+         [:div.sp-prg-heading-cell
+          [:h6 {:style {:font-weight "bold"}} "Title"]
+          [:p (nth (text-content @current-project) 0)]]]
         [:div.sp-prg-table-cell
          {:style {:display "prg-table-cell"
                   :text-align "center"}}
@@ -382,10 +397,9 @@
     [:div.prg-heading-cell
      {:style {:display "prg-heading-cell"
               :text-align "center"}}
-     [:h4 (nth (text-content @current-project) 0)]
+     [heading]
      [calva-logo]
-     [:h6 "Below are examples of some of my work, alongside a description of the techniques and technologies involved."]
-     [:h6 {:style {:font-size "16pt"}} " Use the links under \"completed applications\" to see my various projects."]]]])
+     [menu]]]])
 
 (defn programming-container []
   [:div.prg-content
