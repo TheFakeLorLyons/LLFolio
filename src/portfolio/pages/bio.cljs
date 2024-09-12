@@ -89,10 +89,10 @@
        [:a {:href "#future" :on-click #(reset! display-text :goals)
             :color "#fff678"} "Future Aspirations"]]
       (when (= @display-text :bio)
-        [:h4 {:style {:margin-top "1vh"}}
+        [:h4 {:style {:margin-top "2vh" :margin-bottom "4vh" :font-weight "bold"}}
          "I graduated in 2015..."])
       (for [line (text-content @display-text)]
-        ^{:key line} ;; Use a unique key for each item
+        ^{:key line}
         [:p {:style {:font-size 18}} line])]]]])
 
 (defn bio []

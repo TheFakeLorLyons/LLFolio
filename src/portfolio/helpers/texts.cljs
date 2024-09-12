@@ -82,14 +82,16 @@
    "I joined a company called Revature that trained me in enterprise software development. 
     I created Angular applications as a leader of a team of ~20 people. I made
     the decision to return to school because I wanted to continue my formal education 
-    in CS, and am now on track to begin my masters in August of 2025."])
+    in CS, and am now on track to begin my masters in August of 2025."
+   
+   "1/3"])
 
 (def current
   [[:h4 {:style {:font-weight "bold"
                  :margin-top "2vh"}} "Currently"]
    "I am studying at Bristol Community College, as I am required to fulfill pre requisite math and science 
     courses prior to beginning a Masters in CS at may alma mater - Bridgewater State University. In this time I have
-    studied C and Python in addition to Clojure and Clojurescript. I have also had to revisit math studies and have gotten 
+    studied C and Python in addition to Clojure and Clojurescript. I have also revisited math studies and have gotten 
     an A- and A+ in calculus and statistics respectively."
     
     "I have grown very fond of mathematics, and enjoyed learning statistics by writing an R package alongside my 
@@ -103,7 +105,9 @@
     
     "I am actively seeking any opportunityies to code on a team and am very interested in any internships
     or full-time opportunities for startup or enterprise environments. Please reach out at my email located in the
-    site footer."])
+    site footer."
+   
+   "2/3"])
 
 
 (def future
@@ -121,34 +125,80 @@
     "Aside from Brain Computer Interfaces, I am very interested in code as a means of expression. I recently dipped
     my toes in 'Quil' - which is a 'Clojure package made for generating interactive drawings and animations'. This
     exposure to generating art through code was amazing and something I am sure to explore further in the future. When
-    I do I will be sure to update this site with that code."])
+    I do I will be sure to update this site with that code."
+   
+   "3/3"])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;            Programming              ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(def clay-text
-  [(str "I recently joined the Scicloj mentorship program and will be assisting them in documenting a data visualization
-      tool that allows \"visual data exloration and documents from source code\" (from the site). I am currently practicing 
-      reagent on several applications, including a data visualization app that will fetch information from steam, and similar,
-      APIs in order to recommend games based on custom queries.")
+(defn links-format [url text]
+  [:a {:href url
+       :target "_blank"
+       :rel "noopener noreferrer"}
+   text])
+
+(def clj-camp 
+  [:a {:href "https://my.clojure.camp/"} "Clojure community pairing/mentoring"])
+
+
+(def clj-slack
+  [:a {:href "https://clojurians.slack.com/ssb/redirect"} "Clojurians slack"])
+
+(def prg-current-1
+  ["This semester I am taking two courses and also completeing CompTIA A+ and Network+. While my academic and professional
+    pursuits are in programming rather than IT work, my current job offered me the opportunity to take a 'Healthcare IT' 
+    curriculum that covers both of these CompTIA courses as well as another 'Healthcare Information Management' certificate."
    
-   "I am very interested in Brain-Computer interfaces, and plan on continuing to aim to contribute to the development
+   [:div "I am holding a biweekly clojure group as a part of the "
+    clj-camp]
+   
+   "Another thing I can place here"
+
+   "1/3"])
+
+(def prg-current-2
+  ["I recently joined the Scicloj mentorship program and will be assisting them in documenting a data visualization
+         tool that allows \"visual data exloration and documents from source code\" (from the site). I am currently practicing 
+         reagent on several applications, including a data visualization app that will fetch information from steam, and similar,
+         APIs in order to recommend games based on custom queries."
+
+   "2/3"])
+
+(def prg-current-3
+  ["I am very interested in Brain-Computer interfaces, and plan on continuing to aim to contribute to the development
          of BCI hardware and applications. I am particualrly interested in exploring BCI's and VR/AR experiences.
          I also have a passion for data visulizations and communications, and hope to present and speak on information
          pertaining to Clojure and BCIs in the future."
-   
-   "Another thing I can place here"])
 
-(def bci-text
-  "I am very interested in Brain-Computer interfaces, and plan on continuing to aim to contribute to the development
-      of BCI hardware and applications. I am particualrly interested in exploring BCI's and VR/AR experiences.
-      I also have a passion for data visulizations and communications, and hope to present and speak on information
-      pertaining to Clojure and BCIs in the future.")
+   "3/3"])
 
-(def school-study
-  "Another thing I can place here")
+(def prg-future-1
+  ["This is me writing about my future as a test."
 
+   [:div "I am holding a biweekly clojure group as a part of the "
+    clj-slack]
+
+   "Another thing I can place here"
+
+   "1/3"])
+
+(def prg-future-2
+  ["I recently joined the Scicloj mentorship program and will be assisting them in documenting a data visualization
+         tool that allows \"visual data exloration and documents from source code\" (from the site). I am currently practicing 
+         reagent on several applications, including a data visualization app that will fetch information from steam, and similar,
+         APIs in order to recommend games based on custom queries."
+
+   "2/3"])
+
+(def prg-future-3
+  ["I am very interested in Brain-Computer interfaces, and plan on continuing to aim to contribute to the development
+         of BCI hardware and applications. I am particualrly interested in exploring BCI's and VR/AR experiences.
+         I also have a passion for data visulizations and communications, and hope to present and speak on information
+         pertaining to Clojure and BCIs in the future."
+
+   "3/3"])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;                Music                ;
@@ -159,12 +209,6 @@
    {:url "https://grotonhill.org/faculty/berit-strong/" :text "Berit Strong"}
    {:url "https://jeromemouffe.com/" :text "Jerome Mouffe"}
    {:url "https://danielacsadi.com/" :text "Daniel Ascadi"}])
-
-(defn links-format [url text]
-  [:a {:href url
-       :target "_blank"
-       :rel "noopener noreferrer"}
-   text])
 
 (defn formatted-links-list [links]
   (let [count (count links)]

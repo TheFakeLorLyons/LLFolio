@@ -643,7 +643,8 @@ a.extras-button {
   color: #ffffff;
   background-color: #97b3fcbc; 
 }
-#prg-button:active {
+#prg-button:active,
+#prg-button:focus {
   color: #ffffff;
   background-color: #d59755f0; 
 }

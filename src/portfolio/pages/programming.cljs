@@ -204,7 +204,7 @@
      [:span.carousel-control-next-icon {:aria-hidden "true"}]
      [:span.sr-only "Next"]]]])
 
-(defn general-carousel []
+(defn prg-current-carousel []
   [:div.cont.text.carousel {:id "gCarousel"
                             :data-ride "tcarousel"
                             :class "carousel slide"
@@ -213,17 +213,57 @@
                                     :align-items "center"
                                     :padding-right "5vw"}}
    [:div.carousel-inner {:style {:font-size "16pt"}}
+    [:h6 {:style {:margin "3vh"}} "Works currently in progress"]
     [:div.carousel-item.active
      [:div.conttext
-      (for [line (txt/clay-text)]
-        ^{:key line} ;; Use a unique key for each item
+      (for [line txt/prg-current-1]
+        ^{:key line}
         [:p {:style {:font-size 18}} line])]]
     [:div.carousel-item
      [:div
-      [:p txt/bci-text]]]
+      (for [line txt/prg-current-2]
+        ^{:key line}
+        [:p {:style {:font-size 18}} line])]]
     [:div.carousel-item
      [:div
-      [:p txt/school-study]]]
+      (for [line txt/prg-current-3]
+         ^{:key line}
+         [:p {:style {:font-size 18}} line])]]
+    [:a.carousel-control-prev {:href "#gCarousel"
+                               :role "button"
+                               :data-slide "prev"
+                               :style {:width "relative"}}
+     [:span.carousel-control-prev-icon {:aria-hidden "true"}]
+     [:span.sr-only "Previous"]]
+    [:a.carousel-control-next {:href "#gCarousel" :role "button" :data-slide "next"}
+     [:span.carousel-control-next-icon {:aria-hidden "true"}]
+     [:span.sr-only "Next"]]]])
+
+(defn prg-future-carousel []
+  [:div.cont.text.carousel {:id "gCarousel"
+                            :data-ride "tcarousel"
+                            :class "carousel slide"
+                            :style {:display "flex"
+                                    :justify-content "center"
+                                    :align-items "center"
+                                    :padding-right "5vw"}}
+   [:div.carousel-inner {:style {:font-size "16pt"}}
+    [:h6 {:style {:margin "3vh"}} "Programming aspirations"]
+    [:div.carousel-item.active
+     [:div.conttext
+      (for [line txt/prg-future-1]
+        ^{:key line}
+        [:p {:style {:font-size 18}} line])]]
+    [:div.carousel-item
+     [:div
+      (for [line txt/prg-future-2]
+        ^{:key line}
+        [:p {:style {:font-size 18}} line])]]
+    [:div.carousel-item
+     [:div
+      (for [line txt/prg-future-3]
+        ^{:key line}
+        [:p {:style {:font-size 18}} line])]]
     [:a.carousel-control-prev {:href "#gCarousel"
                                :role "button"
                                :data-slide "prev"
@@ -249,8 +289,8 @@
     :cos [cos-carousel]
     :cont [cont-carousel]
     :card [c-carousel]
-    :in-prog [general-carousel]
-    :future  [general-carousel]
+    :in-prog [prg-current-carousel]
+    :future  [prg-future-carousel]
     [:div "No carousel available"]))
 
 (def pw-proj-info
