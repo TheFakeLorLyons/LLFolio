@@ -63,6 +63,14 @@ jobs:
         eval $(ssh-agent -s)
         ssh-add ~/.ssh/id_ed25519
 
+    - name: Set correct permissions on remote server
+      env:
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+        IP_ADDRESS: ${{ secrets.IP_ADDRESS }}
+        SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
+      run: |
+        sshpass -p "$SERVER_PASSWORD" ssh -i ~/.ssh/id_ed25519 -p 22 $SSH_USERNAME@$IP_ADDRESS 'sudo chown -R $SSH_USERNAME:$SSH_USERNAME /var/www/lorelailyons.me/html/'
+
     - name: Deploy to server using rsync
       env:
         SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
