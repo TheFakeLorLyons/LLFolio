@@ -128,10 +128,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (def clay-text
-  (str "I recently joined the Scicloj mentorship program and will be assisting them in documenting a data visualization
+  [(str "I recently joined the Scicloj mentorship program and will be assisting them in documenting a data visualization
       tool that allows \"visual data exloration and documents from source code\" (from the site). I am currently practicing 
       reagent on several applications, including a data visualization app that will fetch information from steam, and similar,
-      APIs in order to recommend games based on custom queries."))
+      APIs in order to recommend games based on custom queries.")
+   
+   "I am very interested in Brain-Computer interfaces, and plan on continuing to aim to contribute to the development
+         of BCI hardware and applications. I am particualrly interested in exploring BCI's and VR/AR experiences.
+         I also have a passion for data visulizations and communications, and hope to present and speak on information
+         pertaining to Clojure and BCIs in the future."
+   
+   "Another thing I can place here"])
 
 (def bci-text
   "I am very interested in Brain-Computer interfaces, and plan on continuing to aim to contribute to the development

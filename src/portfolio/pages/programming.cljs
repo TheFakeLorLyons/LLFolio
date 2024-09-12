@@ -215,7 +215,9 @@
    [:div.carousel-inner {:style {:font-size "16pt"}}
     [:div.carousel-item.active
      [:div.conttext
-      [:p txt/clay-text]]]
+      (for [line (txt/clay-text)]
+        ^{:key line} ;; Use a unique key for each item
+        [:p {:style {:font-size 18}} line])]]
     [:div.carousel-item
      [:div
       [:p txt/bci-text]]]

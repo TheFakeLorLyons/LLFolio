@@ -637,12 +637,17 @@ a.extras-button {
 #prg-button {
   padding: .5ex;
   border-radius: 8%/45%;
-  background-color: #fff67885; 
+  background-color: #97b3fc85; 
 }
 #prg-button:hover {
   color: #ffffff;
-  background-color: #fff678bc; 
+  background-color: #97b3fcbc; 
 }
+#prg-button:active {
+  color: #ffffff;
+  background-color: #d59755f0; 
+}
+
 
 .sp-prg-table-cell {
   border: 1pt solid #fff;
