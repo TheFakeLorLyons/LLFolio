@@ -24,13 +24,13 @@
 (def page-styles
   {:landing {:main {:background "linear-gradient(205deg, rgba(187, 189, 174, 0.156) 0%, rgba(187, 189, 174, 0.156) 10%, rgba(25, 20, 10, 0.156) 40%, rgba(1, 0, 1, 0.5) 60%, rgba(0, 0, 0) 80%)"
                     :background-color "#150628"}
-             :sidebar {:background "linear-gradient(135deg, rgba(187, 189, 174, 0.156),rgb(1, 0, 1) 65%)"
-                       :background-color "#150628"}}
+             :sidebar {:background "linear-gradient(135deg, rgba(187, 189, 174, 0.156),rgb(1, 0, 1, .45) 65%)"
+                       :background-color "#1506288f"}}
    :rcv {:main {:background "linear-gradient(205deg, rgba(50, 50, 50, 0.156), rgb(20, 20, 20) 60%)"
                 :background-color "#141414"}
-         :sidebar {:background "linear-gradient(205deg, rgba(50, 50, 50, 0.156), rgb(20, 20, 20) 60%)"
-                   :background-color "#141414"}}
-   :bio {:main {:background "linear-gradient(205deg, rgba(238, 144, 238, 0.156), rgb(0, 0, 0) 60%)"
+         :sidebar {:background "linear-gradient(205deg, rgba(50, 50, 50, 0.156), rgb(20, 20, 20, .85) 60%)"
+                   :background-color "#1414148f"}}
+   :bio {:main {:background "linear-gradient(205deg, rgba(238, 144, 238, 0.156), rgb(0, 0, 0, .95) 60%)"
                 :background-color "#093b09"}
          :sidebar {:background "linear-gradient(135deg, rgba(40, 60, 40, 0.5) 10%, rgba(0, 20, 27, .45) 50%, rgba(1, 0, 1, .95) 85%)"
                    :background-color "#093b0985"}}
@@ -39,7 +39,7 @@
                                                      rgb(0, 27, 45.75) 45%, 
                                                      rgb(0, 0, 10) 75%)"
                 :background-color "#2c8bc985"}
-         :sidebar {:background "linear-gradient(135deg, rgba(0, 47.8, 87.1, 0.156) 0%, rgba(0, 27, 45.75, .65), rgba(1, 0, 1, .95) 65%)"
+         :sidebar {:background "linear-gradient(135deg, rgba(0, 47.8, 87.1, 0.156) 0%, rgba(0, 27, 45.75, .65), rgba(1, 0, 1, .85) 65%)"
                    :background-color "#2c8bc985"}}
    :mus {:main {:background "linear-gradient(205deg, rgba(52, 207, 139, 0.725) 5%, rgba(40, 186, 120, .9) 20%, rgba(1, 0, 1, .75) 70%,  rgba(0, 0, 0) 95%)"
                 :background-color "#34cf8b"}

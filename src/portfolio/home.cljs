@@ -87,7 +87,7 @@
     [:h1 {:style {:font-weight "bold"}}
      "Lorelai Lyons"]
     [:h4 {:style {:opacity "50%"}}
-     "Programming"]
+     "Programming / Design / Communication"]
     [clj-logo]]
    [:div.landing-container
     [txt/home-text-carousel]]

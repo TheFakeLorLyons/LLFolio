@@ -62,6 +62,23 @@
   [:div
    [page/zoomable-image "/assets/contacts/cont-edit-2.png" "cont-edit2" "35vw"]])
 
+;data-vis
+(defn apples3d []
+  [:div
+   [page/zoomable-image "/assets/data/apples3d.png" "apples3d" "35vw"]])
+(defn apples2d []
+  [:div
+   [page/zoomable-image "/assets/data/apples2d.svg" "apples2d" "35vw"]])
+(defn lgbt-stats1 []
+  [:div
+   [page/zoomable-image "/assets/data/lgbt-stats1.png" "lgbt-stats1" "25vw"]])
+(defn lgbt-stats2 []
+  [:div
+   [page/zoomable-image "/assets/data/lgbt-stats2.png" "lgbt-stats2" "30vw"]])
+(defn lgbt-stats3 []
+  [:div
+   [page/zoomable-image "/assets/data/lgbt-stats3.png" "lgbt-stats3" "25vw"]])
+
 ;c-projects
 (defn ard-buzz []
   [:video {:width "33%"
@@ -213,22 +230,33 @@
                                     :align-items "center"
                                     :padding-right "5vw"}}
    [:div.carousel-inner {:style {:font-size "16pt"}}
-    [:h6 {:style {:margin "3vh"}} "Works currently in progress"]
     [:div.carousel-item.active
+     [lgbt-stats1]]
+    [:div.carousel-item {:style {:padding-left "2.5vw"
+                                 :padding-right "2.5vw"}}
+     [:h6 {:style {:margin "3vh"}} "Works currently in progress"]
      [:div.conttext
       (for [line txt/prg-current-1]
         ^{:key line}
         [:p {:style {:font-size 18}} line])]]
-    [:div.carousel-item
+    [:div.carousel-item {:style {:padding-left "2.5vw"
+                                 :padding-right "2.5vw"}}
+     [:h6 {:style {:margin "3vh"}} "Getting Involved with Sci-Cloj"]
      [:div
       (for [line txt/prg-current-2]
         ^{:key line}
         [:p {:style {:font-size 18}} line])]]
     [:div.carousel-item
+     [lgbt-stats2]]
+    [:div.carousel-item
+     [lgbt-stats3]]
+    [:div.carousel-item {:style {:padding-left "2.5vw"
+                                 :padding-right "2.5vw"}}
+     [:h6 {:style {:margin "3vh"}} "Works currently in progress"]
      [:div
       (for [line txt/prg-current-3]
-         ^{:key line}
-         [:p {:style {:font-size 18}} line])]]
+        ^{:key line}
+        [:p {:style {:font-size 18}} line])]]
     [:a.carousel-control-prev {:href "#gCarousel"
                                :role "button"
                                :data-slide "prev"
@@ -248,18 +276,28 @@
                                     :align-items "center"
                                     :padding-right "5vw"}}
    [:div.carousel-inner {:style {:font-size "16pt"}}
-    [:h6 {:style {:margin "3vh"}} "Programming aspirations"]
-    [:div.carousel-item.active
-     [:div.conttext
+    [:div.carousel-item.active {:style {:margin-top "2.5vh"}}
+     [apples3d]]
+    [:div.carousel-item {:style {:padding-left "2.5vw"
+                                 :padding-right "2.5vw"}}
+     [:h6 {:style {:margin ".5vh"}} "Coming Attractions"]
+     [:div.conttext {:style {:margin-top "1vh"}}
       (for [line txt/prg-future-1]
         ^{:key line}
         [:p {:style {:font-size 18}} line])]]
-    [:div.carousel-item
+    [:div.carousel-item {:style {:margin-top "2.5vh"
+                                 :padding-left "2.5vw"
+                                 :padding-right "2.5vw"}}
+     [:h6 {:style {:margin "3vh"}} "Mentoring and Volunteering"]
      [:div
       (for [line txt/prg-future-2]
         ^{:key line}
         [:p {:style {:font-size 18}} line])]]
-    [:div.carousel-item
+    [:div.carousel-item {:style {:margin-top "2.5vh"}}
+     [apples2d]]
+    [:div.carousel-item {:style {:padding-left "2.5vw"
+                                 :padding-right "2.5vw"}}
+     [:h6 "Programming aspirations"]
      [:div
       (for [line txt/prg-future-3]
         ^{:key line}
