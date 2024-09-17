@@ -234,7 +234,7 @@
      [lgbt-stats1]]
     [:div.carousel-item {:style {:padding-left "2.5vw"
                                  :padding-right "2.5vw"}}
-     [:h6 {:style {:margin "3vh"}} "Works currently in progress"]
+     [:h6 {:style {:margin "1vh"}} "Works currently in progress"]
      [:div.conttext
       (for [line txt/prg-current-1]
         ^{:key line}
@@ -252,7 +252,7 @@
      [lgbt-stats3]]
     [:div.carousel-item {:style {:padding-left "2.5vw"
                                  :padding-right "2.5vw"}}
-     [:h6 {:style {:margin "3vh"}} "Works currently in progress"]
+     [:h6 {:style {:margin "3vh"}} "Things I'm studying"]
      [:div
       (for [line txt/prg-current-3]
         ^{:key line}
