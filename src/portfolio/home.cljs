@@ -16,6 +16,14 @@
                                         ;            buttons/misc             ;
 ;;;;;;;;;;;;;;;;;;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(defn mobile-banner []
+  [:img {:src "/assets/images/mobilebanner.png"
+         :style {:position "absolute"
+                 :height "25%"
+                 :transform "translate(30vw, -23vh)"
+                 :scale "60%"
+                 :z-index 0}}])
+
 (defn clj-logo []
   [:img {:src "/assets/images/cljicon.png"
          :id "clj-icon"
@@ -43,17 +51,55 @@
                   :margin "10px"
                   :display (if (= (:display-content @page/state) :landing) "block" "none")}}]])
 
+(defn mob-reagent-icons []
+  [:div
+   [:img {:src "/assets/images/reagenticon2.png"
+          :id "reagent-icon2"
+          :style {:position "fixed"
+                  :margin-left "2vh"
+                  :height "40px"
+                  :width "40px"
+                  :display (if (= (:display-content @page/state) :landing) "block" "none")}}]
+   [:img {:src "/assets/images/reagenticon.png"
+          :id "reagent-icon"
+          :style {:position "fixed"
+                  :margin-left "2vh"
+                  :height "40px"
+                  :width "40px"
+                  :display (if (= (:display-content @page/state) :landing) "block" "none")}}]])
+
+
 (defn menu-button []
-  [:button 
+  [:button
    {:class (when (not (:menu-open @page/state)) "visible")
     :on-click #(swap! page/state update :menu-open not)
     :style {:margin "20px"
-            :border "1pt solid #312c36"}}
+            :border "1pt solid #312c3685"}}
    ">>"])
 
+(defn mob-clj-logo []
+  [:img {:src "/assets/images/cljicon.png"
+         :id "clj-icon"
+         :on-click #(swap! page/state update :menu-open not)
+         :style {:margin "2vh"
+                 :cursor "pointer"
+                 :height "40px"
+                 :width "40px" 
+                 :opacity (if (not (:menu-open @page/state)) 1
+                            0)}}])
+
+(defn mob-r-logo []
+  [:img {:src "/assets/images/ricon.png"
+         :id "clj-icon"
+         :on-click #(swap! page/state update :menu-open not)
+         :style {:cursor "pointer"
+                 :height "40px"
+                 :width "40px"
+                 :opacity (if (not (:menu-open @page/state)) 0
+                              1)}}])
 (defn back-button []
   [:div
-   [:button 
+   [:button
     {:on-click #(swap! page/state update :menu-open not)}
     "<<"]])
 
@@ -64,18 +110,28 @@
 (defn sidebar []
   [:div.sidebar
    {:class (when (:menu-open @page/state) "visible")
-     :style (:sidebar @page/current-styles)}
+    :style (:sidebar @page/current-styles)}
    [back-button]
+   [menu]])
+
+(defn mob-sidebar []
+  [:div.mob-sidebar
+   {:class (when (:menu-open @page/state) "visible")
+    :style (:sidebar @page/current-styles)}
+   [mob-r-logo]
    [menu]])
 
 (defn footer []
   [:div.footer
    [:div "Lorelai Lyons - Updated Sep 2024"]
-   [lnk/footer-links]])
+   [:div
+    [mob-reagent-icons]
+    [lnk/footer-links]]])
 
 (defn heading []
   [:div.heading
-     [menu-button]])
+   (if (@page/state :mobile) [mob-clj-logo]
+     [menu-button])])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;              content                ;
@@ -93,6 +149,16 @@
     [txt/home-text-carousel]]
    [reagent-icons]])
 
+(defn mob-landing []
+  [:div.landing-content
+   [:div.title
+    [:h3 {:style {:font-weight "bold"}}
+     "Lorelai Lyons"]
+    [:h6 {:style {:opacity "50%"}}
+     "Programming & Design"]]
+   [:div.landing-container
+    [txt/mob-home-text-carousel]]])
+
 (defn main-view-container []
   [:div.main-content
    (case (:display-content @page/state)
@@ -104,6 +170,19 @@
      :art [art/art-container]
      :wrt [wrt/writing-container]
      :contact [email/contact-form]
+     [:div "Please select a page."])])
+
+(defn mob-main-view-container []
+  [:div.main-content
+   (case (:display-content @page/state)
+     :landing [mob-landing]
+     :bio [b/bio]
+     :rcv [rcv/rcvs]
+     :prg [prg/programming-container]
+     :mus [mus/music-container]
+     :art [art/art-container]
+     :wrt [wrt/writing-container]
+     :contact [email/mob-contact-form]
      [:div "Please select a page."])])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -120,8 +199,33 @@
     [main-view-container]]
    [footer]])
 
+(defn mob-frame []
+  [:div.layout {:style (:main @page/current-styles)}
+   [heading]
+   (when (= (:display-content @page/state) :landing)
+     [mobile-banner])
+   [:div.interactivity
+    (if (:menu-open @page/state)
+      [mob-sidebar]
+      nil)
+    [mob-main-view-container]]
+   [footer]])
+
+(defn is-mobile? []
+  (let [user-agent (.-userAgent js/navigator)]
+    (println "User Agent:" user-agent)
+    (cond
+      (re-find #"Mobi" user-agent) true
+      (re-find #"Android" user-agent) true
+      (re-find #"iPhone" user-agent) true
+      (re-find #"iPad" user-agent) true
+      :else false)))
+
 (defn ^:dev/after-load start []
-  (rdom/render [frame]
-               (.getElementById js/document "app")))
+  (reset! page/state (assoc @page/state :mobile (is-mobile?)))
+  (js/console.log (str @page/state))
+  (if (:mobile @page/state)
+     (rdom/render [mob-frame] (.getElementById js/document "app"))
+     (rdom/render [frame] (.getElementById js/document "app"))))
 
 (start)

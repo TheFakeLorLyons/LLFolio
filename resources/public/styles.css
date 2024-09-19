@@ -76,6 +76,7 @@ body {
 #homeCarousel {
   
 }
+
 #homeCarousel .carousel-inner {
   border-radius: 5%/10%;
   margin-top: 3vh;
@@ -87,12 +88,65 @@ body {
 }
 .carousel-item {
 }
+#mobCarousel .carousel-inner {
+  border-radius: 20%/10%;
+  margin-top: 3vh;
+  border: 1px solid #15062880;
+  box-shadow: 2px 0 5px rgba(1,0,1,0.5);
+  background-color: #b699db18;
+  width: 90vw;
+  height: 65vh;
+}
+#mobioCarousel .carousel-inner::-webkit-scrollbar {
+  width: 8px;
+}
+#mobgCarousel .carousel-inner,
+#mobioCarousel .carousel-inner {
+  border-radius: 20%/10%;
+  margin-top: 0;
+  overflow: auto;
+  border: 1px solid #15062880;
+  box-shadow: 2px 0 5px rgba(1,0,1,0.5);
+  background-color: #2322254d;
+  width: 90vw;
+  height: 65vh;
+}
 
-#homeCarousel .carousel-control-prev, #homeCarousel .carousel-control-next {
+#mobCarousel .carousel-control-prev,
+#mobCarousel .carousel-control-next {
+  border-radius: 50%;
+  width: 7vw;
+  height: 40px;
+  top: 50%;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#mobioCarousel .carousel-control-next,
+#mobioCarousel .carousel-control-prev
+{ position: fixed;
+  border-radius: 50%;
+  width: 7vw;
+  height: 40px;
+  top: 50%;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#homeCarousel .carousel-control-prev,
+#homeCarousel .carousel-control-next {
   position: fixed;
   top: 43.5%;
-  width: 35%;
-  height: 15%; 
+  width: 30em;
+  height: 6em;
   border-radius: 50%; 
   color: white; 
   border: none;
@@ -103,6 +157,7 @@ body {
   justify-content: center;
   transform: scale(200%);
 }
+#mobCarousel .carousel-control-prev:hover, #mobCarousel .carousel-control-next:hover,
 #homeCarousel .carousel-control-prev:hover, #homeCarousel .carousel-control-next:hover {
   color: rgb(197, 179, 179); 
 }
@@ -124,14 +179,26 @@ body {
   height: 100vh;
   transition: left 5s ease; 
 }
+.mob-sidebar.visible,
 .sidebar.visible {
   left: 0;
   transform: translateY(-.5vh);
   font-size: larger;
   z-index: 1;
 }
+.mob-sidebar {
+  width: 100vw; 
+  background: linear-gradient(135deg, rgba(187, 189, 174, 0.156),rgb(1, 0, 1) 65%);
+  background-color: #150628;
+  padding: 20px; 
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 
-
+  position: fixed;
+  top: 0;
+  left: -15vw; 
+  height: 100vh;
+  transition: left 5s ease; 
+}
 
 .footer {
   background-color: black;
@@ -273,7 +340,7 @@ form {
     background-color: #b5b8d39d;
  }
 button {
-  background-color: #fff678;
+  background-color: #fff67892;
   color: #290c35;
   border: none;
   text-decoration: none;
@@ -533,16 +600,21 @@ a.extras-button {
   width: 20vw;
 }
 
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .image-container img {
   transition: transform 0.3s ease;
   cursor: pointer;
-  max-width: 100%;
+
   height: auto;
+  user-select: none;
+  pointer-events: none;
+  
 }
 
-.image-container img.zoomed {
-  transform: scale(2);
-}
 #gCarousel .carousel-control-prev, 
 #gCarousel .carousel-control-next,
 #cCarousel .carousel-control-prev, 
@@ -567,8 +639,6 @@ a.extras-button {
 #gCarousel .carousel-control-next:hover,
 #contCarousel .carousel-control-prev:hover, 
 #contCarousel .carousel-control-next:hover,
-#contCarousel .carousel-control-prev:hover, 
-#contCarousel .carousel-control-next:hover,
 #cosCarousel .carousel-control-prev:hover,
 #cosCarousel .carousel-control-next:hover,
 #pwCarousel .carousel-control-prev:hover, 
@@ -591,15 +661,107 @@ a.extras-button {
 }
 
 
-.prg-heading-table {
-  
+#mobgCarousel .carousel-control-prev, 
+#mobgCarousel .carousel-control-next,
+#mobcCarousel .carousel-control-prev, 
+#mobcCarousel .carousel-control-next,
+#mobcontCarousel .carousel-control-prev, 
+#mobcontCarousel .carousel-control-next,
+#mobcosCarousel .carousel-control-prev, 
+#mobcosCarousel .carousel-control-next,
+#mobpwCarousel .carousel-control-prev, 
+#mobpwCarousel .carousel-control-next {
+  position: fixed;
+  top: 50%;
+  width: 5%;
+  height: 5%; 
+  border-radius: 50%;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.6s ease;
+  box-shadow: 2px 0 5px rgba(1,0,1,0.5);
 }
+#mobgCarousel .carousel-control-prev:hover, 
+#mobgCarousel .carousel-control-next:hover,
+#mobcontCarousel .carousel-control-prev:hover, 
+#mobcontCarousel .carousel-control-next:hover, 
+#mobcosCarousel .carousel-control-prev:hover,
+#mobcosCarousel .carousel-control-next:hover,
+#mobpwCarousel .carousel-control-prev:hover, 
+#mobpwCarousel .carousel-control-next:hover {
+  color: rgb(197, 179, 179); 
+}
+#mobgCarousel .carousel-inner, 
+#mobgCarousel .carousel-inner,
+#mobcCarousel .carousel-inner,
+#mobcontCarousel .carousel-inner,
+#mobcosCarousel .carousel-inner,
+#mobpwCarousel .carousel-inner {
+  border-radius: 5%/10%;
+  margin-top: 1vh;
+  border: 1px solid #15062880;
+  box-shadow: 2px 0 5px rgba(1,0,1,0.5);
+  background-color: #b699db18;
+  width: 95vw;  
+  height: 60vh;
+  overflow: hidden;
+}
+.mob-top-prg-inner-item {
+  border-bottom: 2pt solid #d8dcb1fb;
+}
+
+.mob-prg-carousel-container {
+
+  justify-content: center;
+  text-align: center;
+
+}
+
+.mob-prg-heading-links {
+  color: #d8dcb1fb;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.mob-prg-heading-links:hover {
+  color: #a2c1fe;
+}
+.mob-prg-heading-links:focus {
+  color: #d59755;
+}
+
+.mob-prg-heading-links.active {
+  text-decoration: underline;
+}
+.mob-prg-carousel {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mob-prg-heading-wrapper {
+  display: flex;
+  width: 100vw;
+}
+.mob-prg-heading {
+  display: inline-flex;
+  gap: 3vw;
+  padding: 1vw;
+  overflow-x: auto; /* Allow horizontal scrolling */
+  background: #413f4185; /* Background color */
+  align-items: center;
+}
+
+.mob-prg-heading-table-row,
 .prg-heading-table-row {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
+
+.mob-prg-heading-cell,
 .prg-heading-cell {
   width: 75vw;  
 }
@@ -637,16 +799,16 @@ a.extras-button {
 #prg-button {
   padding: .5ex;
   border-radius: 8%/45%;
-  background-color: #97b3fc85; 
+  background-color: #97b4fc1c; 
 }
 #prg-button:hover {
   color: #ffffff;
-  background-color: #97b3fcbc; 
+  background-color: #97b4fc78; 
 }
 #prg-button:active,
 #prg-button:focus {
   color: #ffffff;
-  background-color: #d59755f0; 
+  background-color: #d597555b; 
 }
 
 
