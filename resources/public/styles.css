@@ -100,6 +100,23 @@ body {
 #mobioCarousel .carousel-inner::-webkit-scrollbar {
   width: 8px;
 }
+
+#mobmusCarousel .carousel-inner{
+  align-items: "center";
+  border-radius: 20%/20%;
+  margin-top: 1vh;
+  overflow: auto;
+  border: 1px solid #15062880;
+  box-shadow: 2px 0 5px rgba(1,0,1,0.5);
+  background-color: #2322254d;
+  width: 90vw;
+  height: 60vh;
+  scroll-behavior: hidden;
+}
+
+
+
+
 #mobgCarousel .carousel-inner,
 #mobioCarousel .carousel-inner {
   border-radius: 20%/10%;
@@ -125,10 +142,14 @@ body {
   align-items: center;
   justify-content: center;
 }
-
+#mobmusCarousel .carousel-control-next,
+#mobmusCarousel .carousel-control-prev,
+#mobartCarousel .carousel-control-next,
+#mobartCarousel .carousel-control-prev,
 #mobioCarousel .carousel-control-next,
 #mobioCarousel .carousel-control-prev
-{ position: fixed;
+{ 
+
   border-radius: 50%;
   width: 7vw;
   height: 40px;
@@ -170,13 +191,14 @@ body {
   width: 15vw; 
   background: linear-gradient(135deg, rgba(187, 189, 174, 0.156),rgb(1, 0, 1) 65%);
   background-color: #150628;
-  padding: 20px; 
+  padding-top: 22px;
+  padding-left: 20px; 
   box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 
   position: fixed;
   top: 0;
   left: -15vw; 
-  height: 100vh;
+  height: 100%;
   transition: left 5s ease; 
 }
 .mob-sidebar.visible,
@@ -308,21 +330,19 @@ form {
   }
 
  /*buttons*/
-
- input[type="text"],
- input[type="password"] {
+textarea[type="message"],
+input[type="email"],
+input[type="text"],
+input[type="password"] {
     width: 100%;
     padding: 3px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
     font-family: Cambria;
-    background: #fffefb99;
+    background: #fffefbfb;
  }
- input[type="text"]:focus,
- input[type="password"]:focus {
-   background: #fffefbfb;
- }
+
  input[type="submit"] {
     background-color: #ede9f6f3;
     color: #290c35;
@@ -353,6 +373,9 @@ button {
 }
 button:hover {
   background-color: #fff678be;  
+}
+.back-button {
+  background-color: #fff678b5;
 }
 
 .rainbow-button {
@@ -477,10 +500,17 @@ a.extras-button {
   align-items: center;
   align-content: center;
 }
-#artCarousel .carousel-inner {
-  width: 45vw;
+#mobartCarousel .carousel-inner {
+  width: 95vw;
   height: 55vh;
   align-items: center;
+  display: flex;
+}
+#artCarousel .carousel-inner {
+  width: 45vw;
+  height: 50vh;
+  align-items: center;
+  display: flex;
 }
 #artCarousel .carousel-control-prev
 #artCarousel .carousel-control-next {
@@ -554,7 +584,7 @@ a.extras-button {
   width: 40vw;  
   height: 60vh;
 }
-#musCarousel .carousel-inner, 
+
 #bioCarousel .carousel-inner {
   border: 1px solid #15062880;
   box-shadow: 2px 0 5px rgba(1,0,1,0.5);
@@ -584,6 +614,15 @@ a.extras-button {
   box-shadow: 0 4px 8px rgba(0,0,0,0.5);
   align-items: center;
   width: 90%;
+}
+
+.mob-wrt-container {
+  overflow: auto;
+  scrollbar-width: none;
+  margin: 0 auto; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  align-items: center;
+  width: 100%;
 }
 
 .mus-container {
@@ -660,7 +699,6 @@ a.extras-button {
   height: 60vh;
 }
 
-
 #mobgCarousel .carousel-control-prev, 
 #mobgCarousel .carousel-control-next,
 #mobcCarousel .carousel-control-prev, 
@@ -670,8 +708,8 @@ a.extras-button {
 #mobcosCarousel .carousel-control-prev, 
 #mobcosCarousel .carousel-control-next,
 #mobpwCarousel .carousel-control-prev, 
-#mobpwCarousel .carousel-control-next {
-  position: fixed;
+#mobpwCarousel .carousel-control-next 
+{
   top: 50%;
   width: 5%;
   height: 5%; 
@@ -692,6 +730,7 @@ a.extras-button {
 #mobpwCarousel .carousel-control-next:hover {
   color: rgb(197, 179, 179); 
 }
+
 #mobgCarousel .carousel-inner, 
 #mobgCarousel .carousel-inner,
 #mobcCarousel .carousel-inner,
@@ -705,32 +744,35 @@ a.extras-button {
   background-color: #b699db18;
   width: 95vw;  
   height: 60vh;
-  overflow: hidden;
+ 
 }
 .mob-top-prg-inner-item {
   border-bottom: 2pt solid #d8dcb1fb;
 }
 
+.mob-art-carousel-container,
 .mob-prg-carousel-container {
-
   justify-content: center;
   text-align: center;
-
 }
 
 .mob-prg-heading-links {
-  color: #d8dcb1fb;
+  color: #ede9f6f3;
   cursor: pointer;
   text-decoration: none;
 }
-
+.mob-mus-heading-links:hover,
+.mob-art-heading-links:hover,
 .mob-prg-heading-links:hover {
   color: #a2c1fe;
 }
+.mob-mus-heading-links:focus,
+.mob-art-heading-links:focus,
 .mob-prg-heading-links:focus {
   color: #d59755;
 }
-
+.mob-mus-heading-links.active,
+.mob-art-heading-links.active,
 .mob-prg-heading-links.active {
   text-decoration: underline;
 }
@@ -740,16 +782,29 @@ a.extras-button {
   justify-content: center;
   align-items: center;
 }
+.mob-mus-heading-wrapper,
+.mob-art-heading-wrapper,
 .mob-prg-heading-wrapper {
   display: flex;
   width: 100vw;
 }
+.mob-mus-heading {
+  display: inline-flex;
+  gap: 3vw;
+  padding: 1vw;
+  overflow-x: auto;
+  background: rgba(175, 227, 238, 0.125);
+  align-items: center;
+  border-top: 1pt solid #ffffff3e;
+  border-bottom: 1pt solid #ffffff3e;
+}
+.mob-art-heading,
 .mob-prg-heading {
   display: inline-flex;
   gap: 3vw;
   padding: 1vw;
-  overflow-x: auto; /* Allow horizontal scrolling */
-  background: #413f4185; /* Background color */
+  overflow-x: auto;
+  background: #413f4185;
   align-items: center;
 }
 
@@ -788,6 +843,9 @@ a.extras-button {
   width: 60vw;
   text-align: center;
 }
+.menu-div {
+  width: 104%;
+}
 .prg-left-subheading-buttons,
 .prg-right-subheading-buttons {
   display: flex;
@@ -797,9 +855,9 @@ a.extras-button {
 }
 
 #prg-button {
-  padding: .5ex;
+  padding: .65ex;
   border-radius: 8%/45%;
-  background-color: #97b4fc1c; 
+  background-color: #97b4fc51; 
 }
 #prg-button:hover {
   color: #ffffff;

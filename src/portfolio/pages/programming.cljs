@@ -1,151 +1,23 @@
 (ns portfolio.pages.programming
   (:require  [reagent.core :as r]
              [portfolio.helpers.pages :as page]
-             [portfolio.helpers.texts :as txt]))
+             [portfolio.helpers.texts :as txt]
+             [portfolio.pages.gallery :as gallery]))
 
 (defonce current-project (r/atom :pw))
 
-(defn calva-logo []
-  [:img {:src "/assets/images/calvaicon.png"
-         :id "clj-icon"
-         :style {:position "fixed"
-                 :top "3vh"
-                 :right "2vw"
-                 :margin "10px"
-                 :display (if (= (:display-content @page/state) :prg) "block" "none")}}])
-
-(defn mob-calva-logo []
-  [:img {:src "/assets/images/calvaicon.png"
-         :id "clj-icon"
-         :style {:position "fixed"
-                 :top "0vh"
-                 :right "0vw"
-                 :height "80px"
-                 :width "80px" 
-                 :display (if (= (:display-content @page/state) :prg) "block" "none")}}])
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                                        ;            image assets             ;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;pw-manager
-(defn pw-login []
+(defn me-and-bob-martin []
   [:div
    (if (@page/state :mobile)
-     [page/zoomable-image "/assets/lpm.jpg" "pw-login" "140%"]
-     [page/zoomable-image "/assets/lpm.jpg" "pw-login" "35vw"])])
-(defn pw-home []
+     [:div
+      [page/zoomable-image "/assets/biopics/me-and-bm.jpg" "me-and-bm" "100%"]]
+     [page/zoomable-image "/assets/biopics/me-and-bm.jpg" "me-and-bm" "25vw"])])
+(defn clean-code []
   [:div
    (if (@page/state :mobile)
-     [page/zoomable-image "/assets/lpmpwhome.jpg" "pw-home" "100%"]
-     [page/zoomable-image "/assets/lpmpwhome.jpg" "pw-home" "35vw"])])
-(defn pw-encrypted []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/encryptedpws.jpg" "pw-enc" "100%"]
-     [page/zoomable-image "/assets/encryptedpws.jpg" "pw-enc" "35vw"])])
-
-;cosminis
-(defn cos-erd []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/cosminis-pics/Cosminis-ERD.png" "cos-erd" "100%"]
-     [page/zoomable-image "/assets/cosminis-pics/Cosminis-ERD.png" "cos-erd" "35vw"])])
-(defn cos-all-cos []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/cosminis-pics/all-companions.png" "cos-all-cos" "100%"]
-     [page/zoomable-image "/assets/cosminis-pics/all-companions.png" "cos-all-cos" "35vw"])])
-(defn cos-friends []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/cosminis-pics/friends-page.png" "cos-friends" "100%"]
-     [page/zoomable-image "/assets/cosminis-pics/friends-page.png" "cos-friends" "35vw"])])
-(defn cos-order-hist []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/cosminis-pics/orderHistory.png" "cos-order-hist" "100%"]
-     [page/zoomable-image "/assets/cosminis-pics/orderHistory.png" "cos-order-hist" "35vw"])])
-(defn cos-purchase-conf []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/cosminis-pics/purchaseConfirmation.png" "cos-purchase-conf" "100%"]
-     [page/zoomable-image "/assets/cosminis-pics/purchaseConfirmation.png" "cos-purchase-conf" "35vw"])])
-(defn cos-purchases []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/cosminis-pics/purchases.png" "cos-purchases" "100%"]
-     [page/zoomable-image "/assets/cosminis-pics/purchases.png" "cos-purchases" "35vw"])])
-(defn cos-filled-purch []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/cosminis-pics/purchasespopulated.png" "cos-filled-purch" "100%"]
-     [page/zoomable-image "/assets/cosminis-pics/purchasespopulated.png" "cos-filled-purch" "35vw"])])
-
-;contacts-application
-(defn cont-main []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/contacts/cont-main.png" "cont-main" "100%"]
-     [page/zoomable-image "/assets/contacts/cont-main.png" "cont-main" "35vw"])])
-(defn cont-edit-1 []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/contacts/cont-edit-1.png" "cont-edit1" "100%"]
-     [page/zoomable-image "/assets/contacts/cont-edit-1.png" "cont-edit1" "35vw"])])
-(defn cont-edit-2 []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/contacts/cont-edit-2.png" "cont-edit2" "100%"]
-     [page/zoomable-image "/assets/contacts/cont-edit-2.png" "cont-edit2" "35vw"])])
-
-;data-vis
-(defn apples3d []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/data/apples3d.png" "apples3d" "100%"]
-     [page/zoomable-image "/assets/data/apples3d.png" "apples3d" "35vw"])])
-(defn apples2d []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/data/apples2d.svg" "apples2d" "100%"]
-     [page/zoomable-image "/assets/data/apples2d.svg" "apples2d" "35vw"])])
-(defn lgbt-stats1 []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/data/lgbt-stats1.png" "lgbt-stats1" "100%"]
-     [page/zoomable-image "/assets/data/lgbt-stats1.png" "lgbt-stats1" "25vw"])])
-(defn lgbt-stats2 []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/data/lgbt-stats2.png" "lgbt-stats2" "100%"]
-     [page/zoomable-image "/assets/data/lgbt-stats2.png" "lgbt-stats2" "30vw"])])
-(defn lgbt-stats3 []
-  [:div
-   (if (@page/state :mobile)
-     [page/zoomable-image "/assets/data/lgbt-stats3.png" "lgbt-stats3" "100%"]
-     [page/zoomable-image "/assets/data/lgbt-stats3.png" "lgbt-stats3" "25vw"])])
-
-;c-projects
-(defn ard-buzz []
-  [:video {:width "33%"
-           :controls true}
-   [:source {:src "/assets/vids/arduino-buzzer.mov"
-             :type "video/mp4"}]
-   "Your browser does not support the video tag."])
-(defn ard-lights []
-  [:video {:width "90%"
-           :style {:transform "translateY(4.5vh)"}
-           :controls true}
-   [:source {:src "/assets/vids/arduino-lights.mov"
-             :type "video/mp4"}]
-   "Your browser does not support the video tag."])
-(defn nbodies []
-  [:video {:width "90%"
-           :style {:transform "translateY(4.5vh)"}
-           :controls true}
-   [:source {:src "/assets/vids/nbodies.mov"
-             :type "video/mp4"}]
-   "Your browser does not support the video tag."])
+     [:div
+      [page/zoomable-image "/assets/biopics/clean-code.jpg" "clean-code" "100%"]]
+     [page/zoomable-image "/assets/biopics/clean-code.jpg" "clean-code" "15vw"])])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;             slideshows              ;
@@ -162,13 +34,13 @@
    [:div.carousel-inner {:style {:font-size "16pt"}}
     [:div.carousel-item.active
      [:div {:style {:transform "translateY(7.5vh)"}}
-      [pw-login]]]
+      [gallery/pw-login]]]
     [:div.carousel-item
      [:div {:style {:height "25vh"}}
-      [pw-home]]]
+      [gallery/pw-home]]]
     [:div.carousel-item
      [:div {:style {:transform "translateY(4.5vh)"}}
-      [pw-encrypted]]]
+      [gallery/pw-encrypted]]]
     [:a.carousel-control-prev {:href "#pwCarousel"
                                :role "button"
                                :data-slide "prev"}
@@ -188,19 +60,19 @@
                                    :padding-right "5vw"}}
    [:div.carousel-inner {:style {:font-size "16pt"}}
     [:div.carousel-item.active
-     [:div.costext {:style {:transform "translateY(7.5vh)"}} [cos-erd]]]
+     [:div.costext {:style {:transform "translateY(7.5vh)"}} [gallery/cos-erd]]]
     [:div.carousel-item
-     [:div  {:style {:transform "translateY(4.5vh)"}} [cos-all-cos]]]
+     [:div  {:style {:transform "translateY(4.5vh)"}} [gallery/cos-all-cos]]]
     [:div.carousel-item
-     [:div {:style {:transform "translateY(4.5vh)"}} [cos-friends]]]
+     [:div {:style {:transform "translateY(4.5vh)"}} [gallery/cos-friends]]]
     [:div.carousel-item
-     [:div {:style {:transform "translateY(4.5vh)"}} [cos-filled-purch]]]
+     [:div {:style {:transform "translateY(4.5vh)"}} [gallery/cos-filled-purch]]]
     [:div.carousel-item
-     [:div {:style {:transform "translateY(4.5vh)"}} [cos-order-hist]]]
+     [:div {:style {:transform "translateY(4.5vh)"}} [gallery/cos-order-hist]]]
     [:div.carousel-item
-     [:div {:style {:transform "translateY(4.5vh)"}} [cos-purchase-conf]]]
+     [:div {:style {:transform "translateY(4.5vh)"}} [gallery/cos-purchase-conf]]]
     [:div.carousel-item
-     [:div {:style {:transform "translateY(4.5vh)"}} [cos-purchases]]]
+     [:div {:style {:transform "translateY(4.5vh)"}} [gallery/cos-purchases]]]
     [:a.carousel-control-prev {:href "#cosCarousel"
                                :role "button"
                                :data-slide "prev"
@@ -222,13 +94,13 @@
    [:div.carousel-inner {:style {:font-size "16pt"}}
     [:div.carousel-item.active
      [:div.conttext {:style {:transform "translateY(3vh)"}}
-      [cont-main]]]
+      [gallery/cont-main]]]
     [:div.carousel-item
      [:div {:style {:transform "translateY(3vh)"}}
-      [cont-edit-1]]]
+      [gallery/cont-edit-1]]]
     [:div.carousel-item
      [:div {:style {:transform "translateY(3vh)"}}
-      [cont-edit-2]]]
+      [gallery/cont-edit-2]]]
     [:a.carousel-control-prev {:href "#contCarousel"
                                :role "button"
                                :data-slide "prev"
@@ -250,13 +122,13 @@
    [:div.carousel-inner {:style {:font-size "16pt"}}
     [:div.carousel-item.active
      [:div.conttext
-      [ard-buzz]]]
+      [gallery/ard-buzz]]]
     [:div.carousel-item
      [:div
-      [ard-lights]]]
+      [gallery/ard-lights]]]
     [:div.carousel-item
      [:div
-      [nbodies]]]
+      [gallery/nbodies]]]
     [:a.carousel-control-prev {:href "#cCarousel"
                                :role "button"
                                :data-slide "prev"
@@ -264,6 +136,61 @@
      [:span.carousel-control-prev-icon {:aria-hidden "true"}]
      [:span.sr-only "Previous"]]
     [:a.carousel-control-next {:href "#cCarousel" :role "button" :data-slide "next"}
+     [:span.carousel-control-next-icon {:aria-hidden "true"}]
+     [:span.sr-only "Next"]]]])
+
+(defn prg-conj-carousel []
+  [:div.cont.text.carousel {:id "gCarousel"
+                            :data-ride "tcarousel"
+                            :class "carousel slide"
+                            :style {:display "flex"
+                                    :justify-content "center"
+                                    :align-items "center"
+                                    :padding-right "5vw"}}
+   [:div.carousel-inner {:style {:font-size "16pt"}}
+    [:div.carousel-item.active {:style {:margin-top "2vh"
+                                        :padding-left "2.5vw"
+                                        :padding-right "2.5vw"}}
+     [:h6 {:style {:margin "1vh"}} "Conj 2024 - The Journey"]
+     (for [line txt/prg-conj-1]
+       ^{:key line}
+       [:p {:style {:font-size 18}} line])]
+    [:div.carousel-item {:style {:margin-top "4vh"}}
+     [:div.conttext
+      [:div {:style {:margin-top "6.5vh"
+                     :margin-bottom "3vh"}}
+       [me-and-bob-martin]]
+      (for [line txt/prg-conj-2]
+        ^{:key line}
+        [:p {:style {:font-size 18}} line])]]
+    [:div.carousel-item {:style {:padding-left "2.5vw"
+                                 :padding-right "2.5vw"}}
+     [:h6 {:style {:margin-top "1vh"}} "Making the most of a conference"]
+     [:div {:style {:margin-top "1.5vh"}}
+      (for [line txt/prg-conj-3]
+        ^{:key line}
+        [:p {:style {:font-size 18}} line])]]
+    [:div.carousel-item {:style {:margin-top "2.5vh"}}
+     [:div {:style {:margin-top "4.5vh"
+                    :margin-bottom "3vh"}}
+      [clean-code]]
+     (for [line txt/prg-conj-4]
+       ^{:key line}
+       [:p {:style {:font-size 18}} line])]
+    [:div.carousel-item {:style {:padding-left "2.5vw"
+                                 :padding-right "2.5vw"}}
+     [:h6 {:style {:margin-top "2vh"}} "Don't hesitate to say hello!"]
+     [:div {:style {:margin-top "4vh"}}
+      (for [line txt/prg-conj-5]
+        ^{:key line}
+        [:p {:style {:font-size 18}} line])]]
+    [:a.carousel-control-prev {:href "#gCarousel"
+                               :role "button"
+                               :data-slide "prev"
+                               :style {:width "relative"}}
+     [:span.carousel-control-prev-icon {:aria-hidden "true"}]
+     [:span.sr-only "Previous"]]
+    [:a.carousel-control-next {:href "#gCarousel" :role "button" :data-slide "next"}
      [:span.carousel-control-next-icon {:aria-hidden "true"}]
      [:span.sr-only "Next"]]]])
 
@@ -276,26 +203,26 @@
                                     :align-items "center"
                                     :padding-right "5vw"}}
    [:div.carousel-inner {:style {:font-size "16pt"}}
-    [:div.carousel-item.active
-     [lgbt-stats1]]
-    [:div.carousel-item {:style {:padding-left "2.5vw"
-                                 :padding-right "2.5vw"}}
+    [:div.carousel-item.active {:style {:padding-left "2.5vw"
+                                        :padding-right "2.5vw"}}
      [:h6 {:style {:margin "1vh"}} "Works currently in progress"]
      [:div.conttext
       (for [line txt/prg-current-1]
         ^{:key line}
         [:p {:style {:font-size 18}} line])]]
+    [:div.carousel-item {:style {:margin-top "4vh"}}
+     [gallery/lgbt-stats1]]
     [:div.carousel-item {:style {:padding-left "2.5vw"
                                  :padding-right "2.5vw"}}
-     [:h6 {:style {:margin "3vh"}} "Getting Involved with Sci-Cloj"]
+     [:h6 {:style {:margin-top "2vh"}} "Getting Involved with Sci-Cloj"]
      [:div
       (for [line txt/prg-current-2]
         ^{:key line}
         [:p {:style {:font-size 18}} line])]]
+    [:div.carousel-item {:style {:margin-top "2.5vh"}}
+     [gallery/lgbt-stats2]]
     [:div.carousel-item
-     [lgbt-stats2]]
-    [:div.carousel-item
-     [lgbt-stats3]]
+     [gallery/lgbt-stats3]]
     [:div.carousel-item {:style {:padding-left "2.5vw"
                                  :padding-right "2.5vw"}}
      [:h6 {:style {:margin "3vh"}} "Things I'm studying"]
@@ -322,15 +249,15 @@
                                     :align-items "center"
                                     :padding-right "5vw"}}
    [:div.carousel-inner {:style {:font-size "16pt"}}
-    [:div.carousel-item.active {:style {:margin-top "2.5vh"}}
-     [apples3d]]
-    [:div.carousel-item {:style {:padding-left "2.5vw"
-                                 :padding-right "2.5vw"}}
+    [:div.carousel-item.active {:style {:padding-left "2.5vw"
+                                        :padding-right "2.5vw"}}
      [:h6 {:style {:margin ".5vh"}} "Coming Attractions"]
      [:div.conttext {:style {:margin-top "1vh"}}
       (for [line txt/prg-future-1]
         ^{:key line}
         [:p {:style {:font-size 18}} line])]]
+    [:div.carousel-item {:style {:margin-top "2.5vh"}}
+     [gallery/apples3d]]
     [:div.carousel-item {:style {:margin-top "2.5vh"
                                  :padding-left "2.5vw"
                                  :padding-right "2.5vw"}}
@@ -340,7 +267,7 @@
         ^{:key line}
         [:p {:style {:font-size 18}} line])]]
     [:div.carousel-item {:style {:margin-top "2.5vh"}}
-     [apples2d]]
+     [gallery/apples2d]]
     [:div.carousel-item {:style {:padding-left "2.5vw"
                                  :padding-right "2.5vw"}}
      [:h6 "Programming aspirations"]
@@ -391,6 +318,12 @@
    "C, Java, JUnit, gcc, makefiles, vi, vim, github, PuTTY, VMs, IP addressing, Arduino, Arduino IDE, 
     Serial Data Processing, Sorting Algorithms, IntelliJ"])
 
+(def conj-labels
+  [[:a {:href "https://github.com/TheFakeLorLyons/" :target "_blank"}
+    [:h5 {:style {:font-weight "bold"}} "I got to go to Conj!!"]]
+   "I am pretty excited about it, it also provided me the modus operandi to update my website ;)"
+   "Mermaid, UML/Diagraming, Minizinc, Helix, Overtone"])
+
 (def in-prog
   [[:a {:href "https://github.com/TheFakeLorLyons/" :target "_blank"}
     [:h5 {:style {:font-weight "bold"}} "In Progress Applications and Study"]]
@@ -416,17 +349,18 @@
     :cos cos-proj-info
     :cont contacts-proj-info
     :card c-ard
+    :conj conj-labels
     :in-prog in-prog
     :future fut-text
     "No content available"))
 
 (defn mob-pw-carousel []
   [:div.mob.prg.text.carousel {:id "mobpwCarousel"
-                            :data-ride "tcarousel"
-                            :class "carousel slide"
-                            :style {:display "flex"
-                                    :justify-content "center"
-                                    :align-items "center"}}
+                               :data-ride "tcarousel"
+                               :class "carousel slide"
+                               :style {:display "flex"
+                                       :justify-content "center"
+                                       :align-items "center"}}
    [:div.carousel-inner {:style {:font-size "16pt"
                                  :height "100%"
                                  :display "flex"
@@ -436,17 +370,17 @@
      [:div.mob-top-prg-inner-item
       [txt/pw-what-i-learned]]
      [:div.mob-top-prg-inner-item
-      [pw-login]]]
+      [gallery/pw-login]]]
     [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/pw-description]]
      [:div.mob-top-prg-inner-item
-      [pw-home]]]
+      [gallery/pw-home]]]
     [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/pw-tech-used]]
      [:div.mob-top-prg-inner-item
-      [pw-encrypted]]]
+      [gallery/pw-encrypted]]]
     [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [:h6 {:style {:font-weight "bold"}} "Link to Github"]
@@ -479,38 +413,38 @@
     [:div.carousel-item.active {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/cos-what-i-learned]]
-     [:div.costext
-      [cos-erd]]]
+     [:div.mob-top-prg-inner-item
+      [gallery/cos-erd]]]
     [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/cos-description-1-3]]
-     [:div
-      [cos-all-cos]]]
+     [:div.mob-top-prg-inner-item
+      [gallery/cos-all-cos]]]
     [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/cos-description-2-3]]
-     [:div
-      [cos-friends]]]
+     [:div.mob-top-prg-inner-item
+      [gallery/cos-friends]]]
     [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/cos-description-3-3]]
-     [:div
-      [cos-filled-purch]]]
-    [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
-      [txt/cos-description-3-3]]
-     [:div
-      [cos-order-hist]]]
+      [gallery/cos-filled-purch]]]
     [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/cos-tech-used-1]]
-     [:div
-      [cos-purchase-conf]]]
+     [:div.mob-top-prg-inner-item
+      [gallery/cos-order-hist]]]
     [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/cos-tech-used-2]]
-     [:div
-      [cos-purchases]]]
+     [:div.mob-top-prg-inner-item
+      [gallery/cos-purchase-conf]]]
+    [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
+     [:div.mob-top-prg-inner-item
+      [txt/cos-tech-used-3]]
+     [:div.mob-top-prg-inner-item
+      [gallery/cos-purchases]]]
     [:a.carousel-control-prev {:href "#mobcosCarousel"
                                :role "button"
                                :data-slide "prev"
@@ -536,18 +470,18 @@
     [:div.carousel-item.active {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/cont-what-i-learned]]
-     [:div.conttext
-      [cont-main]]]
+     [:div.mob-top-prg-inner-item
+      [gallery/cont-main]]]
     [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/cont-description]]
-     [:div
-      [cont-edit-1]]]
+     [:div.mob-top-prg-inner-item
+      [gallery/cont-edit-1]]]
     [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/cont-tech-used]]
-     [:div
-      [cont-edit-2]]]
+     [:div.mob-top-prg-inner-item
+      [gallery/cont-edit-2]]]
     [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [:h6 {:style {:font-weight "bold"}} "Link to App"]
@@ -583,18 +517,29 @@
     [:div.carousel-item.active {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/c-what-i-learned]]
-     [:div.conttext
-      [ard-buzz]]]
+     [:div.mob-top-prg-inner-item
+      [gallery/ard-buzz]]]
     [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/c-description]]
-     [:div
-      [ard-lights]]]
+     [:div.mob-top-prg-inner-item
+      [gallery/ard-lights]]]
     [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
      [:div.mob-top-prg-inner-item
       [txt/c-tech-used]]
-     [:div
-      [nbodies]]]
+     [:div.mob-top-prg-inner-item
+      [gallery/nbodies]]]
+    [:div.carousel-item {:style {:border-top "2pt solid #d8dcb1fb"}}
+     [:div.mob-top-prg-inner-item
+      [:div.mob-top-prg-inner-item
+       [:h6 {:style {:font-weight "bold"}} "Link to Github"]
+       [:a {:style {:font-size 36}
+            :href "https://github.com/TheFakeLorLyons/C-Fall-2023"
+            :target "_blank"
+            :rel "noopener noreferrer"}
+        "C projects on GH"]]]
+     [:div.mob-top-prg-inner-item
+      [gallery/bit-print]]]
     [:a.carousel-control-prev {:href "#mobcCarousel"
                                :role "button"
                                :data-slide "prev"
@@ -602,6 +547,50 @@
      [:span.carousel-control-prev-icon {:aria-hidden "true"}]
      [:span.sr-only "Previous"]]
     [:a.carousel-control-next {:href "#mobcCarousel" :role "button" :data-slide "next"}
+     [:span.carousel-control-next-icon {:aria-hidden "true"}]
+     [:span.sr-only "Next"]]]])
+
+(defn mob-conj-carousel []
+  [:div.cont.text.carousel {:id "mobgCarousel"
+                            :data-ride "tcarousel"
+                            :class "carousel slide"
+                            :style {:display "flex"
+                                    :justify-content "center"
+                                    :align-items "center"}}
+   [:div.carousel-inner {:style {:font-size "16pt"}}
+    [:div.carousel-item.active  {:style {:padding-left "2.5vw"
+                                         :padding-right "2.5vw"}}
+     [:h6 {:style {:margin ".5vh"}} "The Journey:"]
+     [:div.conttext {:style {:margin-top "1vh"}}
+      (for [line txt/prg-conj-1]
+        ^{:key line}
+        [:p {:style {:font-size 18}} line])]]
+    [:div.carousel-item {:style {:margin-top "10vh"}}
+     [me-and-bob-martin]]
+    [:div.carousel-item {:style {:margin-top "2.5vh"
+                                 :padding-left "2.5vw"
+                                 :padding-right "2.5vw"}}
+     [:h6 {:style {:margin "3vh"}} "Making the most of the time:"]
+     [:div
+      (for [line txt/prg-conj-3]
+        ^{:key line}
+        [:p {:style {:font-size 18}} line])]]
+    [:div.carousel-item {:style {:margin-top "1vh"}}
+     [clean-code]]
+    [:div.carousel-item {:style {:padding-left "2.5vw"
+                                 :padding-right "2.5vw"}}
+     [:h6 "Programming aspirations"]
+     [:div
+      (for [line txt/prg-conj-5]
+        ^{:key line}
+        [:p {:style {:font-size 18}} line])]]
+    [:a.carousel-control-prev {:href "#mobgCarousel"
+                               :role "button"
+                               :data-slide "prev"
+                               :style {:width "relative"}}
+     [:span.carousel-control-prev-icon {:aria-hidden "true"}]
+     [:span.sr-only "Previous"]]
+    [:a.carousel-control-next {:href "#mobgCarousel" :role "button" :data-slide "next"}
      [:span.carousel-control-next-icon {:aria-hidden "true"}]
      [:span.sr-only "Next"]]]])
 
@@ -620,8 +609,8 @@
       (for [line txt/prg-current-1]
         ^{:key line}
         [:p {:style {:font-size 18}} line])]]
-    [:div.carousel-item
-     [lgbt-stats1]]
+    [:div.carousel-item {:style {:margin-top "8vh"}}
+     [gallery/lgbt-stats1]]
     [:div.carousel-item {:style {:padding-left "2.5vw"
                                  :padding-right "2.5vw"}}
      [:h6 {:style {:margin "3vh"}} "Getting Involved with Sci-Cloj"]
@@ -629,10 +618,10 @@
       (for [line txt/prg-current-2]
         ^{:key line}
         [:p {:style {:font-size 18}} line])]]
-    [:div.carousel-item
-     [lgbt-stats2]]
-    [:div.carousel-item
-     [lgbt-stats3]]
+    [:div.carousel-item {:style {:margin-top "10vh"}}
+     [gallery/lgbt-stats2]]
+    [:div.carousel-item {:style {:margin-top "2vh"}}
+     [gallery/lgbt-stats3]]
     [:div.carousel-item {:style {:padding-left "2.5vw"
                                  :padding-right "2.5vw"}}
      [:h6 {:style {:margin "3vh"}} "Things I'm studying"]
@@ -658,15 +647,15 @@
                                     :justify-content "center"
                                     :align-items "center"}}
    [:div.carousel-inner {:style {:font-size "16pt"}}
-    [:div.carousel-item {:style {:padding-left "2.5vw"
-                                 :padding-right "2.5vw"}}
+    [:div.carousel-item.active  {:style {:padding-left "2.5vw"
+                                         :padding-right "2.5vw"}}
      [:h6 {:style {:margin ".5vh"}} "Coming Attractions"]
      [:div.conttext {:style {:margin-top "1vh"}}
       (for [line txt/prg-future-1]
         ^{:key line}
         [:p {:style {:font-size 18}} line])]]
-    [:div.carousel-item.active {:style {:margin-top "2.5vh"}}
-     [apples3d]]
+    [:div.carousel-item {:style {:margin-top "10vh"}}
+     [gallery/apples3d]]
     [:div.carousel-item {:style {:margin-top "2.5vh"
                                  :padding-left "2.5vw"
                                  :padding-right "2.5vw"}}
@@ -675,8 +664,8 @@
       (for [line txt/prg-future-2]
         ^{:key line}
         [:p {:style {:font-size 18}} line])]]
-    [:div.carousel-item {:style {:margin-top "2.5vh"}}
-     [apples2d]]
+    [:div.carousel-item {:style {:margin-top "10vh"}}
+     [gallery/apples2d]]
     [:div.carousel-item {:style {:padding-left "2.5vw"
                                  :padding-right "2.5vw"}}
      [:h6 "Programming aspirations"]
@@ -714,6 +703,7 @@
     :cos [cos-carousel]
     :cont [cont-carousel]
     :card [c-carousel]
+    :conj [prg-conj-carousel]
     :in-prog [prg-current-carousel]
     :future  [prg-future-carousel]
     [:div "No carousel available"]))
@@ -721,7 +711,8 @@
 (defn projects []
   [:div.prg-left-subheading-buttons
    [:div.prg-heading-table-row {:style {:flex-direction "column"
-                                        :gap "1.5ex"}}
+                                        :gap "1.5ex"
+                                        :margin-left "5vw"}}
     [:div.sp-prg-heading-cell
      [:a {:href "#pw" :on-click #(reset! current-project :pw)
           :id "prg-button"}
@@ -742,7 +733,13 @@
       "C / Arduino / Java"]]]])
 
 (defn current-fut-projects []
-  [:div.prg-right-subheading-buttons
+  [:div.prg-right-subheading-buttons {:style {:justify-content "space-between"
+                                              :gap "2.5vw"
+                                              :margin-left "5vw"}}
+   [:div.sp-prg-heading-cell
+    [:a {:href "#prg-conj" :on-click #(reset! current-project :conj)
+         :id "prg-button"}
+     "Conj Update!"]]
    [:div.sp-prg-heading-cell
     [:a {:href "#in-prog" :on-click #(reset! current-project :in-prog)
          :id "prg-button"}
@@ -754,7 +751,7 @@
 
 (defn menu []
   [:div.menu-div {:style {:display "flex"
-                          :justify-content "space-evenly"
+                          :justify-content "space-between"
                           :gap "10vw"
                           :margin-top "2vh"}}
    [:div.prg-menu-proj
@@ -792,41 +789,38 @@
                 :text-align "center"}}
        [carousel-component @current-project]]]]]])
 
+
+
+
 (defn mob-prg-table []
   (let [carousels {:pw [mob-pw-carousel "Password Manager"]
                    :cos [mob-cos-carousel "Cosminis"]
                    :cont [mob-cont-carousel "Contacts Manager"]
                    :c [mob-c-carousel "C/Java/Arduino"]
+                   :conj [mob-conj-carousel "Conj 2024"]
                    :current [mob-prg-current-carousel "Current Projects"]
                    :future [mob-prg-future-carousel "Goals & Interests"]}
-        active-carousel (r/atom :pw)
-        handle-wheel (fn [event]
-                       (let [delta (.-deltaY event)
-                             target (.-target event)
-                             scroll-left (.-scrollLeft target)]
-                         (.preventDefault event)
-                         (set! (.-scrollLeft target) (+ scroll-left delta))))]
+        active-carousel (r/atom :pw)]
     (fn []
-    [:div.prg-container
-     [:div.mob-prg-table-wrapper
-      [:div.mob-table-row
-       [:div.mob-prg-heading-wrapper
-        [:div.mob-prg-heading
-         (for [[key [_ title]] carousels]
-           ^{:key key}
-           [:a.mob-prg-heading-links {:href (str "#" (name key))
-                                      :on-click #(reset! active-carousel key)
-                                      :class (when (= @active-carousel key) "active")}
-            [:div {:style {:display "flex"
-                           :gap "3vw"
-                           :align-items "center"}}
-             [:p title]
-             (when (not (= title "Goals & Interests"))[:p.non-heading {:style {:color "#d8dcb1fb"}}" | "])]])]]
-       [:div.mob-prg-carousel-container 
-        (if-let [[carousel-component _] (get carousels @active-carousel)]
-          [carousel-component]
-          [:div (str "No carousel found for key: " @active-carousel)])]]]])))
-
+      [:div.prg-container
+       [:div.mob-prg-table-wrapper
+        [:div.mob-table-row
+         [:div.mob-prg-heading-wrapper
+          [:div.mob-prg-heading
+           (for [[key [_ title]] carousels]
+             ^{:key key}
+             [:a.mob-prg-heading-links {:href (str "#" (name key))
+                                        :on-click #(reset! active-carousel key)
+                                        :class (when (= @active-carousel key) "active")}
+              [:div {:style {:display "flex"
+                             :gap "3vw"
+                             :align-items "center"}}
+               [:p title]
+               (when (not (= title "Goals & Interests")) [:p.non-heading {:style {:color "#d8dcb1fb"}} " | "])]])]]
+         [:div.mob-prg-carousel-container
+          (if-let [[carousel-component _] (get carousels @active-carousel)]
+            [carousel-component]
+            [:div (str "No carousel found for key: " @active-carousel)])]]]])))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;                content              ;
@@ -837,14 +831,14 @@
    [:div.prg-heading-table-row
     [:div.prg-heading-cell
      [heading]
-     [calva-logo]
+     [gallery/calva-logo]
      [menu]]]])
 
 (defn mob-prg-heading []
   [:div.mob-prg-heading-table
    [:div.mob-prg-heading-table-row
     [:div.mob-prg-heading-cell
-     [mob-calva-logo]
+     [gallery/mob-calva-logo]
      [mob-heading]]]])
 
 (defn programming-container []

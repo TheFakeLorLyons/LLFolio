@@ -14,7 +14,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;            buttons/misc             ;
-;;;;;;;;;;;;;;;;;;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defn mobile-banner []
   [:img {:src "/assets/images/mobilebanner.png"
@@ -56,14 +56,14 @@
    [:img {:src "/assets/images/reagenticon2.png"
           :id "reagent-icon2"
           :style {:position "fixed"
-                  :margin-left "2vh"
+                  :margin-left ".5vh"
                   :height "40px"
                   :width "40px"
                   :display (if (= (:display-content @page/state) :landing) "block" "none")}}]
    [:img {:src "/assets/images/reagenticon.png"
           :id "reagent-icon"
           :style {:position "fixed"
-                  :margin-left "2vh"
+                  :margin-left ".5vh"
                   :height "40px"
                   :width "40px"
                   :display (if (= (:display-content @page/state) :landing) "block" "none")}}]])
@@ -74,8 +74,10 @@
    {:class (when (not (:menu-open @page/state)) "visible")
     :on-click #(swap! page/state update :menu-open not)
     :style {:margin "20px"
+            :height "30px"
+            :width "30px"
             :border "1pt solid #312c3685"}}
-   ">>"])
+   "λ"])
 
 (defn mob-clj-logo []
   [:img {:src "/assets/images/cljicon.png"
@@ -84,9 +86,9 @@
          :style {:margin "2vh"
                  :cursor "pointer"
                  :height "40px"
-                 :width "40px" 
+                 :width "40px"
                  :opacity (if (not (:menu-open @page/state)) 1
-                            0)}}])
+                              0)}}])
 
 (defn mob-r-logo []
   [:img {:src "/assets/images/ricon.png"
@@ -99,8 +101,11 @@
                               1)}}])
 (defn back-button []
   [:div
-   [:button
-    {:on-click #(swap! page/state update :menu-open not)}
+   [:button.back-button
+    {:on-click #(swap! page/state update :menu-open not)
+     :style {:height "30px"
+             :width "30px"
+             :border "1pt solid #312c3685"}}
     "<<"]])
 
 (defn menu []
@@ -123,15 +128,16 @@
 
 (defn footer []
   [:div.footer
-   [:div "Lorelai Lyons - Updated Sep 2024"]
+   [:div "Lorelai Lyons - Updated Dec 2024"]
    [:div
-    [mob-reagent-icons]
+    (when (@page/state :mobile)
+      [mob-reagent-icons])
     [lnk/footer-links]]])
 
 (defn heading []
   [:div.heading
    (if (@page/state :mobile) [mob-clj-logo]
-     [menu-button])])
+       [menu-button])])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;              content                ;
@@ -225,7 +231,7 @@
   (reset! page/state (assoc @page/state :mobile (is-mobile?)))
   (js/console.log (str @page/state))
   (if (:mobile @page/state)
-     (rdom/render [mob-frame] (.getElementById js/document "app"))
-     (rdom/render [frame] (.getElementById js/document "app"))))
+    (rdom/render [mob-frame] (.getElementById js/document "app"))
+    (rdom/render [frame] (.getElementById js/document "app"))))
 
 (start)

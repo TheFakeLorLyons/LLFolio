@@ -3,9 +3,8 @@ A collection of my previous academic, professional, and personal work.
 
 This repository contains the code that lays out my present-day coding autobiography.
 
-It isn't too long yet because I am still relatively early on in my journey; but I am very
-excited about the progress that I have already made as a programmer and I am excited to
-learn more and improve every day. This website is visible at https://www.lorelailyons.me.
+I am proud about the progress that I have already made as a programmer and I am happy to
+have the opportunity to share my work with you. This website is visible at https://www.lorelailyons.me.
 In this codebase, I removed configuration files and assets that are contained in the full
 codebase. For anyone interested, you can reach out via my site's contact section, and I
 would be happy to talk about any of my work now or moving forward.

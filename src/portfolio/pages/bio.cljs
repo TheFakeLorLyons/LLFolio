@@ -1,61 +1,67 @@
 (ns portfolio.pages.bio
-   (:require [reagent.core :as r]
-             [portfolio.helpers.texts :as txt]
-             [portfolio.helpers.pages :as page]))
+  (:require [reagent.core :as r]
+            [portfolio.helpers.texts :as txt]
+            [portfolio.helpers.pages :as page]))
 
- (defonce display-text (r/atom :bio))
+(defonce display-text (r/atom :bio))
 
- (defn r-icon []
-   [:img {:src "/assets/images/ricon.png"
-          :id "clj-icon"
-          :style {:position "fixed"
-                  :top "-2vh"
-                  :right "2vw"
-                  :margin "10px"
-                  :scale "60%"
-                  :opacity ".65"
-                  :display (if (= (:display-content @page/state) :bio) "block" "none")}}])
+(defn r-icon []
+  [:img {:src "/assets/images/ricon.png"
+         :id "clj-icon"
+         :style {:position "fixed"
+                 :top "-2vh"
+                 :right "2vw"
+                 :margin "10px"
+                 :scale "60%"
+                 :opacity ".65"
+                 :display (if (= (:display-content @page/state) :bio) "block" "none")}}])
 
- (defn piano-picture []
-   [:div
-    (if (@page/state :mobile)
-      [page/zoomable-image "/assets/me&piano.png" "me@piano" "100%"]
-      [page/zoomable-image "/assets/me&piano.png" "me@piano" "20vw"])])
- (defn hiking-worm []
-   [:div
-
-    (if (@page/state :mobile)
-      [:div {:style {:transform "translateY(12vh)"}}
-       [page/zoomable-image "/assets/hiking-worm.jpg" "hiking-worm" "100%"]]
-      [page/zoomable-image "/assets/hiking-worm.jpg" "hiking-worm" "35vw"])])
- (defn never-give-up []
-   [:div
-    (if (@page/state :mobile)
-      [:div {:style {:transform "translateY(12vh)"}}
-       [page/zoomable-image "/assets/nevergiveup.png" "give-up"  "100%"]]
-      [page/zoomable-image "/assets/nevergiveup.png" "give-up" "45vw"])])
-
- (defn text-content [project]
-   (case project
-     :bio txt/bio
-     :now txt/current
-     :goals txt/future
-     "No content available"))
-
- (defn vegan-btw []
+(defn piano-picture []
+  [:div
+   (if (@page/state :mobile)
+     [page/zoomable-image "/assets/biopics/me&piano.png" "me@piano" "100%"]
+     [page/zoomable-image "/assets/biopics/me&piano.png" "me@piano" "20vw"])])
+(defn hiking-worm []
+  [:div
    (if (@page/state :mobile)
      [:div {:style {:transform "translateY(12vh)"}}
-      [:video {:controls true
-               :style {:width "100%"}}
-       [:source {:src "/assets/gifs/vegan-btw.mp4" :type "video/mp4"}]
-       [:source {:src "/assets/gifs/vegan-btw.webm" :type "video/webm"}]
-       "Your browser does not support the video tag."]]
+      [page/zoomable-image "/assets/biopics/hiking-worm.jpg" "hiking-worm" "100%"]]
+     [page/zoomable-image "/assets/biopics/hiking-worm.jpg" "hiking-worm" "35vw"])])
+(defn never-give-up []
+  [:div
+   (if (@page/state :mobile)
+     [:div {:style {:transform "translateY(12vh)"}}
+      [page/zoomable-image "/assets/biopics/nevergiveup.png" "give-up"  "100%"]]
+     [page/zoomable-image "/assets/biopics/nevergiveup.png" "give-up" "45vw"])])
+(defn second-picture-of-me []
+  [:div
+   (if (@page/state :mobile)
      [:div
-      [:video {:controls true
-               :style {:width "100%"}}
-       [:source {:src "/assets/gifs/vegan-btw.mp4" :type "video/mp4"}]
-       [:source {:src "/assets/gifs/vegan-btw.webm" :type "video/webm"}]
-       "Your browser does not support the video tag."]]))
+      [page/zoomable-image "/assets/biopics/10-15.jpg" "second-picture-of-me" "100%"]]
+     [page/zoomable-image "/assets/biopics/10-15.jpg" "second-picture-of-me" "20vw"])])
+
+
+(defn text-content [project]
+  (case project
+    :bio txt/bio
+    :now txt/current
+    :goals txt/future
+    "No content available"))
+
+(defn vegan-btw []
+  (if (@page/state :mobile)
+    [:div {:style {:transform "translateY(12vh)"}}
+     [:video {:controls true
+              :style {:width "100%"}}
+      [:source {:src "/assets/gifs/vegan-btw.mp4" :type "video/mp4"}]
+      [:source {:src "/assets/gifs/vegan-btw.webm" :type "video/webm"}]
+      "Your browser does not support the video tag."]]
+    [:div
+     [:video {:controls true
+              :style {:width "100%"}}
+      [:source {:src "/assets/gifs/vegan-btw.mp4" :type "video/mp4"}]
+      [:source {:src "/assets/gifs/vegan-btw.webm" :type "video/webm"}]
+      "Your browser does not support the video tag."]]))
 
 (defn bio-carousel []
   [:div.carousel {:id "bioCarousel"
@@ -70,7 +76,7 @@
     [:div.carousel-item {:style {:margin-top "4.25vh"}}
      [never-give-up]]
     [:div.carousel-item {:style {:margin-top "3.5vh"}}
-     [hiking-worm]]
+     [second-picture-of-me]]
     [:div.carousel-item {:style {:margin-top "3.5vh"}}
      [vegan-btw]]
     [:a.carousel-control-prev {:href "#bioCarousel"
@@ -105,7 +111,7 @@
     [:div.carousel-item {:style {:margin-top "3.5vh"}}
      [vegan-btw]]
     [:div.carousel-item {:style {:margin-top "3.5vh"}}
-     [hiking-worm]]
+     [second-picture-of-me]]
     [:div.carousel-item {:style {:margin-top "1vh"}}
      [:div {:style {:text-align "center"
                     :padding "1rem"}}
